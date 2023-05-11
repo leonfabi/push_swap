@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrug <fkrug@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:07:27 by fkrug             #+#    #+#             */
-/*   Updated: 2023/03/28 16:35:05 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/11 20:30:53 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (lst != NULL)
-	{
-		if (*lst != NULL)
-			new->next = *lst;
-		*lst = new;
-	}
+	// if (lst != NULL)
+	// {
+	// 	if (*lst != NULL)
+	// 		new->next = *lst;
+	// 	*lst = new;
+	// }
+	new->next = *lst;
+	*lst = new;
 }

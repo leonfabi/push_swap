@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 12:34:00 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/11 19:22:20 by fkrug            ###   ########.fr       */
+/*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
+/*   Updated: 2023/05/11 19:35:36 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-long long	ft_atoi(const char *nptr)
-{
-	long long	n;
-	int	sign;
+#include "Libft/libft.h"
+#include "limits.h"
 
-	n = 0;
-	sign = 1;
-	while (*nptr && ((8 < *nptr && 14 > *nptr) || *nptr == 32))
-		nptr++;
-	if (*nptr == '-')
-	{
-		sign = -1;
-		nptr++;
-	}
-	else if (*nptr == '+')
-		nptr++;
-	while (ft_isdigit(*nptr))
-	{
-		n *= 10;
-		n = n + *nptr - 48;
-		nptr++;
-	}
-	n *= sign;
-	return (n);
-}
+typedef struct s_stack_content{
+	int	number;
+	int	position;
+}	t_s_c;
+typedef struct s_stack{
+	t_list	*sa;
+	t_list	*sb;
+}	t_s;
+
+int	is_str_valid(char *str);
+
+#endif

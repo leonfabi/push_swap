@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   push_swap_utils_input.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 12:34:00 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/11 19:22:20 by fkrug            ###   ########.fr       */
+/*   Created: 2023/05/11 18:40:40 by fkrug             #+#    #+#             */
+/*   Updated: 2023/05/11 19:35:55 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-long long	ft_atoi(const char *nptr)
+int	is_str_valid(char *str)
 {
-	long long	n;
-	int	sign;
+	char		*tmp;
+	long long	nbr;
 
-	n = 0;
-	sign = 1;
-	while (*nptr && ((8 < *nptr && 14 > *nptr) || *nptr == 32))
-		nptr++;
-	if (*nptr == '-')
+	tmp = str;
+	if (*tmp == '+' || *tmp == '-')
+		tmp++;
+	if (!*tmp)
+		return (0);
+	while (*tmp)
 	{
-		sign = -1;
-		nptr++;
+		if (!ft_isdigit(*tmp))
+			return (0);
+		tmp++;
 	}
-	else if (*nptr == '+')
-		nptr++;
-	while (ft_isdigit(*nptr))
-	{
-		n *= 10;
-		n = n + *nptr - 48;
-		nptr++;
-	}
-	n *= sign;
-	return (n);
+	nbr = ft_atoi(str);
+	if (nbr > INT_MAX || nbr < INT_MIN)
+		return (0);
+	return (1);
 }
+
