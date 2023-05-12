@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:40:40 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/12 14:44:20 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/12 16:11:53 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,10 @@ t_s_c	*ft_contentnew(int number, int position)
 	start->number = number;
 	start->position = position;
 	return (start);
+}
+
+void	ft_sanitize(t_s *stack)
+{
+	ft_lstclear(&(stack->sa), &free);
+	ft_lstclear(&(stack->sb), &free);
 }

@@ -6,11 +6,12 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/12 14:59:12 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/12 16:37:02 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	initialize_stack(int argc, char **argv, t_s *state)
 {
@@ -30,15 +31,17 @@ int	initialize_stack(int argc, char **argv, t_s *state)
 				return (0);
 			}
 			ft_lstadd_front(&(state->sa), ft_lstnew(ft_contentnew(ft_atoi(tmp[count]),0)));
+			printf("Funktion call add front\nsizeof t_s_c: %d\n",(int)sizeof(t_s_c));
 			count++;
 		}
 		//doppelte zahlen
 	}
-	// ft_printf("Stack: %d",((t_s_c *)state.sa->content)->number);
-	//printf("Stack: %d",(state.sa->number));
+	count = 0;
+	while (tmp[count])
+		free(tmp[count++]);
+	free(tmp);
 	return 0;
 }
-#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	t_s	state;
@@ -53,5 +56,8 @@ int	main(int argc, char **argv)
 		ft_printf("________\n%d\n",((t_s_c *)state.sa->content)->number);
 		state.sa = state.sa->next;
 	}
+	//free(&(state.sa->content));
+	//free(state.sa);
+	//ft_sanitize(&state);
 	return (EXIT_SUCCESS);
 }
