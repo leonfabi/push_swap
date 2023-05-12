@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/12 18:15:17 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/12 20:25:51 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,24 @@ int	initialize_stack(int argc, char **argv, t_s *stack_ptr)
 			if (!is_str_valid(tmp[count]))
 			{
 				ft_putstr_fd("Error\n", STDERR_FILENO);
+				ft_free_2d(tmp);
+				ft_sanitize(stack_ptr);
 				return (0);
 			}
 			ft_lstadd_front(&(stack_ptr->sa), ft_lstnew(ft_contentnew(ft_atoi(tmp[count]),0)));
-			// printf("Memory address sa: %p\n", &stack_ptr->sa);
-			// printf("Memory address content: %p\n", &stack_ptr->sa->content);
-			// printf("Function call add front\nsizeof t_s_c: %d\nlist: %d\n",(int)sizeof(t_s_c),(int)sizeof(t_list));
 			count++;
 		}
-		count = 0;
-		while (tmp[count])
-			free(tmp[count++]);
-		free(tmp);
-		//doppelte zahlen
+		if (ft_list_double(stack_ptr->sa))
+		{
+			ft_free_2d(tmp);
+			ft_putstr_fd("Error\n", STDERR_FILENO);
+			ft_sanitize(stack_ptr);
+			return (0);
+		}
+		else
+			ft_free_2d(tmp);
 	}
-	// free(stack_ptr->sa->content);
-	// free(stack_ptr->sa);
-	return 0;
+	return (0);
 }
 
 int	main(int argc, char **argv)

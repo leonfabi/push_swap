@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:40:40 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/12 18:15:48 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/12 20:21:49 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,34 @@ t_s_c	*ft_contentnew(int number, int position)
 
 void	ft_sanitize(t_s *stack)
 {
-	//t_list	*tmp;
-
 	ft_lstclear(&(stack->sa), &free);
-	// while (stack->sa)
-	// {
-	// 	tmp = stack->sa;
-	// 	free(stack->sa->content);
-	// 	stack->sa=stack->sa->next;
-	// 	free(tmp);
-	// }
-	//ft_lstclear(&(stack->sb), &free);
+	ft_lstclear(&(stack->sb), &free);
+}
+
+void	ft_free_2d(char **tmp)
+{
+	int	count;
+	
+	count = 0;
+	while (tmp[count])
+		free(tmp[count++]);
+	free(tmp);
+}
+
+int	ft_list_double(t_list *sa)
+{
+	int	nbr;
+	
+	if (sa->next)
+	{
+		nbr = ((t_s_c *)(sa->content))->number;
+		sa = sa->next;
+	}
+	while (sa->next)
+	{
+		if (nbr == ((t_s_c *)(sa->next->content))->number)
+			return (1);
+		sa = sa->next;
+	}
+	return (0);
 }
