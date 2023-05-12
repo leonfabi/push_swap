@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/12 20:25:51 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/12 20:27:38 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,6 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (EXIT_FAILURE);
 	initialize_stack(argc, argv, &stacks);
-	/*while (stacks.sa)
-	{
-		ft_printf("________\n%d\n",((t_s_c *)stacks.sa->content)->number);
-		stacks.sa = stacks.sa->next;
-	}*/
-	// printf("Memory address sa: %p\n", (void *)&stacks.sa);
-	// printf("Memory address content: %p\n", (void *)&(stacks.sa->content));
-	//free((stacks.sa->content));
-	//free(stacks.sa);
 	ft_sanitize(&stacks);
 	return (EXIT_SUCCESS);
 }
