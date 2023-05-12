@@ -6,11 +6,11 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 16:35:57 by fkrug             #+#    #+#              #
-#    Updated: 2023/05/10 16:08:23 by fkrug            ###   ########.fr        #
+#    Updated: 2023/05/12 13:50:13 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := ../libft.a
+NAME := libft.a
 
 CC := cc
 CFLAGS := -Wall -Wextra -Werror
@@ -32,13 +32,13 @@ OBJ := $(SRC:.c=.o)
 
 all: $(NAME)
 $(NAME): $(SRC) $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 

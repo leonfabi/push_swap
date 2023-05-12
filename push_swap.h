@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/11 19:35:36 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/12 14:44:50 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_stack{
 	t_list	*sb;
 }	t_s;
 
+//Helper functions
+t_s_c	*ft_contentnew(int number, int position);
 int	is_str_valid(char *str);
 
 #endif
