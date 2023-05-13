@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 10:49:36 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 12:33:50 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,9 @@ int		is_str_valid(char *str);
 void	ft_free_2d(char **tmp);
 int		ft_list_double(t_list *sa);
 int		ft_error(t_s *stack_ptr, char **tmp, int error);
+
+//Operations
+void	ft_swap(t_s *stp, char *operation);
+void	ft_put_stack(t_s *stp);
 
 #endif

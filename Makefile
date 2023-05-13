@@ -6,7 +6,7 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 13:38:07 by fkrug             #+#    #+#              #
-#    Updated: 2023/05/13 10:35:30 by fkrug            ###   ########.fr        #
+#    Updated: 2023/05/13 12:16:23 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(SRC) $(OBJ)
-	$(CC) $(CFLAGS) push_swap.c push_swap_utils_input.c push_swap_utils_input2.c -L$(LIBFT_DIR) -lft -o $(NAME)
+	$(CC) $(CFLAGS) push_swap.c push_swap_utils_input.c push_swap_utils_input2.c push_swap_utils_operations.c -L$(LIBFT_DIR) -lft -o $(NAME)
 #	ar rcs $(NAME) $(OBJ)
 
 clean:
