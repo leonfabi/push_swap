@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 12:54:33 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 14:13:10 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	initialize_stack(int argc, char **argv, t_s *stp)
 		while (tmp[i])
 		{
 			if (ft_error(stp, tmp, !is_str_valid(tmp[i])))
-				return (0);
+				return (-1);
 			ft_lstadd_front(&(stp->sa), ft_lstnew(ft_cnew(ft_atoi(tmp[i]), 0)));
 			length++;
 			i++;
 		}
 		if (ft_error(stp, tmp, ft_list_double(stp->sa)))
-			return (0);
+			return (-1);
 		else
 			ft_free_2d(tmp);
 	}
@@ -47,10 +47,13 @@ int	main(int argc, char **argv)
 
 	stacks.sa = NULL;
 	stacks.sb = NULL;
-	if (argc < 2)
+	if (argc < 2 || initialize_stack(argc, argv, &stacks) == -1)
 		return (EXIT_FAILURE);
-	initialize_stack(argc, argv, &stacks);
-	ft_swap(&stacks,"sa");
+	//ft_swap(&stacks,"sa");
+	ft_put_stack(&stacks);
+	ft_push(&stacks, "pa");
+	ft_put_stack(&stacks);
+	ft_push(&stacks, "pb");
 	ft_put_stack(&stacks);
 	ft_sanitize(&stacks);
 	return (EXIT_SUCCESS);
