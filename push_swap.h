@@ -6,15 +6,15 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 10:34:47 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 10:49:36 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "Libft/libft.h"
-#include "limits.h"
+# include "Libft/libft.h"
+# include "limits.h"
 
 typedef struct s_stack_content{
 	int	number;
@@ -26,11 +26,11 @@ typedef struct s_stack{
 }	t_s;
 
 //Helper functions
-t_s_c	*ft_contentnew(int number, int position);
+t_s_c	*ft_cnew(int number, int position);
 void	ft_sanitize(t_s *stack);
-int	is_str_valid(char *str);
+int		is_str_valid(char *str);
 void	ft_free_2d(char **tmp);
-int	ft_list_double(t_list *sa);
-void	ft_error(t_s *stack_ptr, char **tmp);
+int		ft_list_double(t_list *sa);
+int		ft_error(t_s *stack_ptr, char **tmp, int error);
 
 #endif

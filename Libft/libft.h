@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:26:32 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/12 14:17:24 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 10:50:36 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void		ft_putnbr_fd(int n, int fd);
 char		**ft_split(char const *s, char c);
 typedef struct s_list{
 	void			*content;
-	// int				number;
-	// int				position;
 	struct s_list	*next;
 }	t_list;
 void		ft_lstadd_back(t_list **lst, t_list *new);

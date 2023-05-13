@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:34:00 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/11 19:22:20 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 10:51:48 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long long	ft_atoi(const char *nptr)
 {
 	long long	n;
-	int	sign;
+	int			sign;
 
 	n = 0;
 	sign = 1;

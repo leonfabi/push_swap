@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:40:40 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 10:39:59 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 10:49:58 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_str_valid(char *str)
 	return (1);
 }
 
-t_s_c	*ft_contentnew(int number, int position)
+t_s_c	*ft_cnew(int number, int position)
 {
 	t_s_c	*start;
 
@@ -68,7 +68,7 @@ void	ft_free_2d(char **tmp)
 int	ft_list_double(t_list *sa)
 {
 	int	nbr;
-	
+
 	if (sa->next)
 		nbr = ((t_s_c *)(sa->content))->number;
 	while (sa->next)

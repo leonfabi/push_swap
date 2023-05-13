@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:07:27 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/11 20:30:53 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 10:52:10 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	// if (lst != NULL)
-	// {
-	// 	if (*lst != NULL)
-	// 		new->next = *lst;
-	// 	*lst = new;
-	// }
 	new->next = *lst;
 	*lst = new;
 }

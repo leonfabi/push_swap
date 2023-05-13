@@ -6,38 +6,32 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 10:37:48 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 10:48:44 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	initialize_stack(int argc, char **argv, t_s *stack_ptr)
+int	initialize_stack(int argc, char **argv, t_s *stp)
 {
-	int		count;
+	int		i;
 	char	**tmp;
 
-	count = 0;
+	i = 0;
 	while (argc-- > 1)
 	{
 		tmp = ft_split(argv[argc], ' ');
-		count = 0;
-		while (tmp[count])
+		i = 0;
+		while (tmp[i])
 		{
-			if (!is_str_valid(tmp[count]))
-			{
-				ft_error(stack_ptr, tmp);
+			if (ft_error(stp, tmp, !is_str_valid(tmp[i])))
 				return (0);
-			}
-			ft_lstadd_front(&(stack_ptr->sa), ft_lstnew(ft_contentnew(ft_atoi(tmp[count]), 0)));
-			count++;
+			ft_lstadd_front(&(stp->sa), ft_lstnew(ft_cnew(ft_atoi(tmp[i]), 0)));
+			i++;
 		}
-		if (ft_list_double(stack_ptr->sa))
-		{
-			ft_error(stack_ptr, tmp);
+		if (ft_error(stp, tmp, ft_list_double(stp->sa)))
 			return (0);
-		}
 		else
 			ft_free_2d(tmp);
 	}
