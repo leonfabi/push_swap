@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/12 20:27:38 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 10:37:48 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,15 @@ int	initialize_stack(int argc, char **argv, t_s *stack_ptr)
 		{
 			if (!is_str_valid(tmp[count]))
 			{
-				ft_putstr_fd("Error\n", STDERR_FILENO);
-				ft_free_2d(tmp);
-				ft_sanitize(stack_ptr);
+				ft_error(stack_ptr, tmp);
 				return (0);
 			}
-			ft_lstadd_front(&(stack_ptr->sa), ft_lstnew(ft_contentnew(ft_atoi(tmp[count]),0)));
+			ft_lstadd_front(&(stack_ptr->sa), ft_lstnew(ft_contentnew(ft_atoi(tmp[count]), 0)));
 			count++;
 		}
 		if (ft_list_double(stack_ptr->sa))
 		{
-			ft_free_2d(tmp);
-			ft_putstr_fd("Error\n", STDERR_FILENO);
-			ft_sanitize(stack_ptr);
+			ft_error(stack_ptr, tmp);
 			return (0);
 		}
 		else

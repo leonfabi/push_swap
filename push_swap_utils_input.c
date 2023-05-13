@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:40:40 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/12 20:21:49 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 10:30:58 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,14 @@ void	ft_sanitize(t_s *stack)
 void	ft_free_2d(char **tmp)
 {
 	int	count;
-	
+
 	count = 0;
-	while (tmp[count])
-		free(tmp[count++]);
-	free(tmp);
+	if (tmp != NULL)
+	{
+		while (tmp[count])
+			free(tmp[count++]);
+		free(tmp);
+	}
 }
 
 int	ft_list_double(t_list *sa)
