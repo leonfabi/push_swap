@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:02:58 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 14:44:06 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 15:02:46 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_push(t_s *stp, char *operation)
 	t_list	*tmp;
 
 	tmp = NULL;
-	if (!ft_strncmp(operation, "pa", 3))
+	if (!ft_strncmp(operation, "pb", 3))
 	{
 		if (stp->sa == NULL)
 			return;
@@ -76,7 +76,7 @@ void	ft_push(t_s *stp, char *operation)
 		stp->sb->next = tmp;
 		ft_putendl_fd(operation, STDOUT_FILENO);
 	}
-	else if (!ft_strncmp(operation, "pb", 3))
+	else if (!ft_strncmp(operation, "pa", 3))
 	{
 		if (stp->sb == NULL)
 			return;
@@ -86,24 +86,4 @@ void	ft_push(t_s *stp, char *operation)
 		stp->sa->next = tmp;
 		ft_putendl_fd(operation, STDOUT_FILENO);
 	}
-}
-
-void	ft_shift_up(t_list **list)
-{
-	t_list	*last;
-
-	last = ft_lstlast(*list);
-	last->next = *list;
-	*list = (*list)->next;
-	last->next->next = NULL;
-	
-}
-
-void	ft_rotate(t_s *stp, char *operation)
-{
-	if (!ft_strncmp(operation, "ra", 3) || !ft_strncmp(operation, "rr", 3))
-		ft_shift_up(&(stp->sa));
-	if (!ft_strncmp(operation, "rb", 3) || !ft_strncmp(operation, "rr", 3))
-		ft_shift_up(&(stp->sb));
-	ft_putendl_fd(operation, STDOUT_FILENO);
 }

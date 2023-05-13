@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 14:44:26 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/13 15:06:42 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,25 @@ int	main(int argc, char **argv)
 	stacks.sb = NULL;
 	if (argc < 2 || initialize_stack(argc, argv, &stacks) == -1)
 		return (EXIT_FAILURE);
-	//ft_swap(&stacks,"sa");
-	ft_push(&stacks, "pa");
-	ft_put_stack(&stacks);
-	ft_rotate(&stacks,"rr");
-	ft_put_stack(&stacks);
+	//Example from pdf
+	// ft_put_stack(&stacks);
+	// ft_swap(&stacks,"sa");
+	// ft_put_stack(&stacks);
+	// ft_push(&stacks, "pb");
+	// ft_push(&stacks, "pb");
+	// ft_push(&stacks, "pb");
+	// ft_put_stack(&stacks);
+	// ft_rotate(&stacks,"rr");
+	// ft_put_stack(&stacks);
+	// ft_rotate(&stacks,"rrr");
+	// ft_put_stack(&stacks);
+	// ft_swap(&stacks,"sa");
+	// ft_put_stack(&stacks);
+	// ft_push(&stacks, "pa");
+	// ft_push(&stacks, "pa");
+	// ft_push(&stacks, "pa");
+	// ft_put_stack(&stacks);
+	//ft_put_stack(&stacks);
 	ft_sanitize(&stacks);
 	return (EXIT_SUCCESS);
 }
