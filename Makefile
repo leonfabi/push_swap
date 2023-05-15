@@ -6,7 +6,7 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 13:38:07 by fkrug             #+#    #+#              #
-#    Updated: 2023/05/13 14:48:36 by fkrug            ###   ########.fr        #
+#    Updated: 2023/05/15 10:03:41 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ CFLAGS := -Wall -Wextra -fsanitize=address -g
 LIBFT_DIR = Libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRC = push_swap_utils_input.c push_swap.c
+SRC = push_swap.c push_swap_utils_input.c push_swap_utils_input2.c \
+	 push_swap_utils_operations.c push_swap_utils_operations2.c \
+	 push_swap_utils_algo.c
 OBJ := $(SRC:.c=.o)
 
 all: $(LIBFT) $(NAME)
@@ -27,7 +29,8 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(SRC) $(OBJ)
-	$(CC) $(CFLAGS) push_swap.c push_swap_utils_input.c push_swap_utils_input2.c push_swap_utils_operations.c push_swap_utils_operations2.c -L$(LIBFT_DIR) -lft -o $(NAME)
+#	$(CC) $(CFLAGS) push_swap.c push_swap_utils_input.c push_swap_utils_input2.c push_swap_utils_operations.c push_swap_utils_operations2.c -L$(LIBFT_DIR) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) -L$(LIBFT_DIR) -lft -o $(NAME)
 #	ar rcs $(NAME) $(OBJ)
 
 clean:

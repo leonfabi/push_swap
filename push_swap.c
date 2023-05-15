@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 15:06:42 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/15 10:53:00 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int argc, char **argv)
 	stacks.sb = NULL;
 	if (argc < 2 || initialize_stack(argc, argv, &stacks) == -1)
 		return (EXIT_FAILURE);
+	ft_init_position(&stacks);
 	//Example from pdf
 	// ft_put_stack(&stacks);
 	// ft_swap(&stacks,"sa");
