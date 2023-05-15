@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/15 10:53:00 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/15 11:26:56 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	// ft_push(&stacks, "pa");
 	// ft_push(&stacks, "pa");
 	// ft_put_stack(&stacks);
-	//ft_put_stack(&stacks);
+	ft_put_stack(&stacks);
 	ft_sanitize(&stacks);
 	return (EXIT_SUCCESS);
 }

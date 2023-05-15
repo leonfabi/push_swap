@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 10:32:05 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 13:59:16 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/15 11:28:28 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_put_stack(t_s *stp)
 	ft_printf("Print stack a:\n______\n");
 	while (tmp)
 	{
-		ft_printf("%d\n_____\n",((t_s_c *)tmp->content)->number);
+		ft_printf("%d\t%d\n_____\n",((t_s_c *)tmp->content)->number, ((t_s_c *)tmp->content)->position);
 		tmp = tmp->next;
 	}
 	ft_printf("END\n");
@@ -41,7 +41,7 @@ void	ft_put_stack(t_s *stp)
 	ft_printf("Print stack b:\n______\n");
 	while (tmp)
 	{
-		ft_printf("%d\n_____\n",((t_s_c *)tmp->content)->number);
+		ft_printf("%d\t%d\n_____\n",((t_s_c *)tmp->content)->number, ((t_s_c *)tmp->content)->position);
 		tmp = tmp->next;
 	}
 	ft_printf("END\n");
