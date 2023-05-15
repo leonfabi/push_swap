@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:03:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/15 11:36:08 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/15 11:45:48 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,23 @@ void	ft_init_position(t_s *stp)
 	ft_bubbleSort(array, length);
 	ft_parse(stp, array, length);
 	free(array);
+}
+
+int	ft_is_sorted(t_s *stp)
+{
+	t_list	*tmp;
+	int		a;
+	int		b;
+
+	tmp = stp->sa;
+	while(tmp->next)
+	{
+		a = ((t_s_c *)tmp->content)->number;
+		b = ((t_s_c *)tmp->next->content)->number;
+		if (a > b)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }
 
