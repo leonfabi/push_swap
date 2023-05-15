@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/15 12:09:16 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/15 12:40:20 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack{
 
 //Helper functions
 t_s_c	*ft_cnew(int number, int position);
-void	ft_sanitize(t_s *stack);
+int		ft_sanitize(t_s *stack);
 int		is_str_valid(char *str);
 void	ft_free_2d(char **tmp);
 int		ft_list_double(t_list *sa);
@@ -44,6 +44,7 @@ void	ft_rotate(t_s *stp, char *operation);
 
 //Algorithm
 void	ft_sort_3(t_s *stp);
+void	ft_sort_5(t_s *stp);
 
 
 #endif

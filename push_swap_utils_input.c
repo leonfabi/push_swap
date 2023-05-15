@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:40:40 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 10:49:58 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/15 12:46:24 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ t_s_c	*ft_cnew(int number, int position)
 	return (start);
 }
 
-void	ft_sanitize(t_s *stack)
+int	ft_sanitize(t_s *stack)
 {
 	ft_lstclear(&(stack->sa), &free);
 	ft_lstclear(&(stack->sb), &free);
+	return (EXIT_SUCCESS);
 }
 
 void	ft_free_2d(char **tmp)

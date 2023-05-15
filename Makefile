@@ -6,7 +6,7 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 13:38:07 by fkrug             #+#    #+#              #
-#    Updated: 2023/05/15 10:03:41 by fkrug            ###   ########.fr        #
+#    Updated: 2023/05/15 12:16:39 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC = push_swap.c push_swap_utils_input.c push_swap_utils_input2.c \
 	 push_swap_utils_operations.c push_swap_utils_operations2.c \
-	 push_swap_utils_algo.c
+	 push_swap_utils_algo.c push_swap_utils_algo2.c
 OBJ := $(SRC:.c=.o)
 
 all: $(LIBFT) $(NAME)

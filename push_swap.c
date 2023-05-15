@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/15 12:10:36 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/15 12:45:27 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ int	main(int argc, char **argv)
 	if (argc < 2 || initialize_stack(argc, argv, &stacks) == -1)
 		return (EXIT_FAILURE);
 	ft_init_position(&stacks);
+	if (ft_is_sorted(&stacks))
+		return (ft_sanitize(&stacks));
+	else if (ft_lstsize(stacks.sa) == 2)
+		ft_swap(&stacks, "sa");
+	else if (ft_lstsize(stacks.sa) == 3)
+		ft_sort_3(&stacks);
 	//Example from pdf
 	// ft_put_stack(&stacks);
 	// ft_swap(&stacks,"sa");
@@ -70,7 +76,7 @@ int	main(int argc, char **argv)
 	// ft_put_stack(&stacks);
 	//ft_printf("\nis sorted %d\n", ft_is_sorted(&stacks));void	ft_sort_3(t_s *stp)
 	//ft_put_stack(&stacks);
-	ft_sort_3(&stacks);
+	//ft_sort_3(&stacks);
 	ft_put_stack(&stacks);
 	ft_sanitize(&stacks);
 	return (EXIT_SUCCESS);
