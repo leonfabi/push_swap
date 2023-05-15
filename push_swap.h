@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/15 11:44:17 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/15 12:09:16 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void	ft_swap(t_s *stp, char *operation);
 void	ft_swap_ss(t_s *stp);
 void	ft_push(t_s *stp, char *operation);
 void	ft_rotate(t_s *stp, char *operation);
+
+//Algorithm
+void	ft_sort_3(t_s *stp);
 
 
 #endif

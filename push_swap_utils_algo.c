@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:03:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/15 11:45:48 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/15 12:08:40 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,3 +101,26 @@ int	ft_is_sorted(t_s *stp)
 	return (1);
 }
 
+void	ft_sort_3(t_s *stp)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = ((t_s_c *)stp->sa->content)->number;
+	b = ((t_s_c *)stp->sa->next->content)->number;
+	c = ((t_s_c *)stp->sa->next->next->content)->number;
+	if (ft_is_sorted(stp))
+		return ;
+	else if (a > b && c > a && c > b)
+		return (ft_swap(stp, "sa"));
+	else if (a > c && a > b && c > b)
+		return (ft_rotate(stp, "ra"));
+	else if (a >c && a < b && b > c)
+		return (ft_rotate(stp, "rra"));
+	ft_swap(stp, "sa");
+	if (a > b)
+		return (ft_rotate(stp, "rra"));
+	else
+		return (ft_rotate(stp, "ra"));
+}
