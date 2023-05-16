@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/15 12:45:27 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/16 13:43:41 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,37 @@ int	initialize_stack(int argc, char **argv, t_s *stp)
 	return (length);
 }
 
+int	ft_search_min(t_s *stp, int search_len, int size)
+{
+	t_list	*tmp;
+	int		t_min;
+	int		t_i;
+	int		count;
+
+	tmp = stp->sa;
+	t_i = 0;
+	t_min = ((t_s_c *)stp->sa->content)->position;
+	while (count < size)
+	{
+		tmp = tmp -> next;
+		count++;
+		if (((t_s_c *)tmp->content)->position < t_min)
+		{
+			if (count < search_len)
+			{
+			t_min = ((t_s_c *)tmp->content)->position;
+			t_i = count;
+			}
+			else if (count > size - search_len)
+			{
+				t_min = ((t_s_c *)tmp->content)->position;
+				t_i = count;//- size;
+			}
+		}
+	}
+	return (t_i);
+}
+
 int	main(int argc, char **argv)
 {
 	t_s	stacks;
@@ -50,12 +81,16 @@ int	main(int argc, char **argv)
 	if (argc < 2 || initialize_stack(argc, argv, &stacks) == -1)
 		return (EXIT_FAILURE);
 	ft_init_position(&stacks);
-	if (ft_is_sorted(&stacks))
-		return (ft_sanitize(&stacks));
-	else if (ft_lstsize(stacks.sa) == 2)
-		ft_swap(&stacks, "sa");
-	else if (ft_lstsize(stacks.sa) == 3)
-		ft_sort_3(&stacks);
+	// if (ft_is_sorted(&stacks))
+	// 	return (ft_sanitize(&stacks));
+	// else if (ft_lstsize(stacks.sa) == 2)
+	// 	ft_swap(&stacks, "sa");
+	// else if (ft_lstsize(stacks.sa) == 3)
+	// 	ft_sort_3(&stacks);
+	// else
+	// 	ft_sort(&stacks);
+	ft_printf("Min an der stelle: %d\n",ft_search_min(&stacks, 2, ft_lstsize(stacks.sa)));
+	//ft_put_stack(&stacks);
 	//Example from pdf
 	// ft_put_stack(&stacks);
 	// ft_swap(&stacks,"sa");
@@ -66,7 +101,7 @@ int	main(int argc, char **argv)
 	// ft_put_stack(&stacks);
 	// ft_rotate(&stacks,"rr");
 	// ft_put_stack(&stacks);
-	// ft_rotate(&stacks,"rrr");
+	// ft_rotate(&stacks,"ra");
 	// ft_put_stack(&stacks);
 	// ft_swap(&stacks,"sa");
 	// ft_put_stack(&stacks);
@@ -77,7 +112,7 @@ int	main(int argc, char **argv)
 	//ft_printf("\nis sorted %d\n", ft_is_sorted(&stacks));void	ft_sort_3(t_s *stp)
 	//ft_put_stack(&stacks);
 	//ft_sort_3(&stacks);
-	ft_put_stack(&stacks);
+	//ft_put_stack(&stacks);
 	ft_sanitize(&stacks);
 	return (EXIT_SUCCESS);
 }
