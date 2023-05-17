@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/17 16:05:49 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/17 16:28:44 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,17 @@ int	initialize_stack(int argc, char **argv, t_s *stp)
 	return (length);
 }
 
+int	ft_is_chunk(int position, int size, int chunk_size, t_s *stp)
+{
+	int	i;
 
+	i = 0;
+	while (i * chunk_size < stp->length - size)
+		i++;
+	if (position < i * chunk_size && position >= (i - 1) * chunk_size)
+		return (1);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -54,15 +64,15 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	ft_init_position(&stacks);
 
-
-	if (ft_is_sorted(&stacks))
-		return (ft_sanitize(&stacks));
-	else if (ft_lstsize(stacks.sa) == 2)
-		ft_swap(&stacks, "sa");
-	else if (ft_lstsize(stacks.sa) == 3)
-		ft_sort_3(&stacks);
-	else
-		ft_sort(&stacks);
+	ft_printf("Is in chunk? %d", ft_is_chunk(0, ft_lstsize(stacks.sa), 2, &stacks));
+	// if (ft_is_sorted(&stacks))
+	// 	return (ft_sanitize(&stacks));
+	// else if (ft_lstsize(stacks.sa) == 2)
+	// 	ft_swap(&stacks, "sa");
+	// else if (ft_lstsize(stacks.sa) == 3)
+	// 	ft_sort_3(&stacks);
+	// else
+	// 	ft_sort(&stacks);
 
 
 	//ft_printf("Min an der stelle: %d\n",ft_search_min_bottom(&stacks, 4, ft_lstsize(stacks.sa)));
