@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/16 09:42:16 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/17 16:01:47 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack_content{
 typedef struct s_stack{
 	t_list	*sa;
 	t_list	*sb;
+	int		length;
 }	t_s;
 
 //Helper functions
