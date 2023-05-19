@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/17 16:01:47 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/19 08:15:04 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_error(t_s *stack_ptr, char **tmp, int error);
 void	ft_put_stack(t_s *stp);
 void	ft_init_position(t_s *stp);
 int		ft_is_sorted(t_s *stp);
+int		initialize_stack(int argc, char **argv, t_s *stp);
 
 //Operations
 void	ft_swap(t_s *stp, char *operation);

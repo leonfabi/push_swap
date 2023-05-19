@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_operations2.c                      :+:      :+:    :+:   */
+/*   push_swap_utils_operations2_bonus.c                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:47:30 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/19 10:03:35 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/19 10:21:19 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	ft_shift_up(t_list **list)
 {
@@ -48,5 +48,4 @@ void	ft_rotate(t_s *stp, char *operation)
 		ft_shift_down(&(stp->sa));
 	if (!ft_strncmp(operation, "rrb", 4) || !ft_strncmp(operation, "rrr", 4))
 		ft_shift_down(&(stp->sb));
-	ft_putendl_fd(operation, STDOUT_FILENO);
 }
