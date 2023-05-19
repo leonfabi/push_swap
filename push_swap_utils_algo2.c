@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:13:15 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/17 16:07:29 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/19 13:56:29 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_search_min_bottom(t_s *stp, int srch_len, int size)
 
 	count = 0;
 	tmp = stp->sa;
-	i = -1 * size;
+	i = 1 * size;
 	min = size;
 	while (size--)
 	{
@@ -90,10 +90,10 @@ void	ft_push_to_b_low_cost(t_s *stp, int srch_len, int size)
 {
 	int	ra;
 	int	rra;
-	
+
 	ra = ft_search_min_top(stp, srch_len, size);
 	rra = ft_search_min_bottom(stp, srch_len, size);
-	if (ra >= rra)
+	if (ra <= rra)
 	{
 		while (ra--)
 			ft_rotate(stp, "ra");
@@ -116,7 +116,7 @@ void	ft_sort(t_s *stp)
 	threshold = length/3;
 	while (stp->sa)
 	{
-		ft_push_to_b_low_cost(stp, 5, ft_lstsize(stp->sa));
+		ft_push_to_b_low_cost(stp, 10, ft_lstsize(stp->sa));
 		if (((t_s_c *)stp->sb->content)->position <= count++)
 			ft_rotate(stp, "rb");
 	}

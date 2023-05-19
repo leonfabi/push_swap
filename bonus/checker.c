@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 07:51:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/19 10:06:17 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/19 10:25:22 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ char	*ft_operation_exec(char *str, t_s *stp)
 
 void	ft_read_instructions(t_s *stp)
 {
+	char	*str;
+
+	
 	while (ft_operation_exec(get_next_line(STDIN_FILENO), stp))
 	{
-		ft_printf("\n--------------------\n");
-		ft_put_stack(stp);
 		ft_printf("\n--------------------\n");
 	}
 }
