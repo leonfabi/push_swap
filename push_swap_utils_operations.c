@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:02:58 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/13 15:02:46 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/19 09:06:01 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@ void	ft_swap(t_s *stp, char *operation)
 	else if (!ft_strncmp(operation, "sa", 3))
 	{
 		if (ft_lstsize(stp->sa) < 2)
-			return;
+			return ;
 		tmp = stp->sa;
 		stp->sa = stp->sa->next;
 		tmp->next = stp->sa->next;
 		stp->sa->next = tmp;
-		ft_putendl_fd(operation,STDOUT_FILENO);
+		ft_putendl_fd(operation, STDOUT_FILENO);
 	}
 	else if (!ft_strncmp(operation, "sb", 3))
 	{
 		if (ft_lstsize(stp->sb) < 2)
-			return;
+			return ;
 		tmp = stp->sb;
 		stp->sb = stp->sb->next;
 		tmp->next = stp->sb->next;
 		stp->sb->next = tmp;
-		ft_putendl_fd(operation,STDOUT_FILENO);
+		ft_putendl_fd(operation, STDOUT_FILENO);
 	}
 }
 
@@ -47,9 +47,9 @@ void	ft_swap_ss(t_s *stp)
 
 	tmp = NULL;
 	if (ft_lstsize(stp->sa) < 2)
-		return;
+		return ;
 	if (ft_lstsize(stp->sb) < 2)
-		return;
+		return ;
 	tmp = stp->sa;
 	stp->sa = stp->sa->next;
 	tmp->next = stp->sa->next;
@@ -61,6 +61,7 @@ void	ft_swap_ss(t_s *stp)
 	stp->sb->next = tmp;
 	ft_putendl_fd("ss", STDOUT_FILENO);
 }
+
 void	ft_push(t_s *stp, char *operation)
 {
 	t_list	*tmp;
@@ -69,7 +70,7 @@ void	ft_push(t_s *stp, char *operation)
 	if (!ft_strncmp(operation, "pb", 3))
 	{
 		if (stp->sa == NULL)
-			return;
+			return ;
 		tmp = stp->sb;
 		stp->sb = stp->sa;
 		stp->sa = stp->sa->next;
@@ -79,7 +80,7 @@ void	ft_push(t_s *stp, char *operation)
 	else if (!ft_strncmp(operation, "pa", 3))
 	{
 		if (stp->sb == NULL)
-			return;
+			return ;
 		tmp = stp->sa;
 		stp->sa = stp->sb;
 		stp->sb = stp->sb->next;
