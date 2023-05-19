@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/19 13:29:22 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/19 15:30:04 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ int	main(int argc, char **argv)
 
 	stacks.sa = NULL;
 	stacks.sb = NULL;
-	stacks.length = 10;
-	initialize_stack(argc, argv, &stacks);
+	stacks.length = initialize_stack(argc, argv, &stacks);
 	if (argc < 2 || stacks.length == -1)
 		return (EXIT_FAILURE);
 	ft_init_position(&stacks);
-
 	//ft_printf("Is in chunk? %d", ft_is_chunk(0, ft_lstsize(stacks.sa), 2, &stacks));
 	//ft_printf("Is in chunk? %d", ft_is_chunk(3, ft_lstsize(stacks.sa), 2, &stacks));
 
