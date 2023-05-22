@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/19 15:30:04 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/22 16:20:40 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	ft_init_position(&stacks);
 	//ft_printf("Is in chunk? %d", ft_is_chunk(0, ft_lstsize(stacks.sa), 2, &stacks));
 	//ft_printf("Is in chunk? %d", ft_is_chunk(3, ft_lstsize(stacks.sa), 2, &stacks));
+	//ft_put_stack(&stacks);
 
 	if (ft_is_sorted(&stacks))
 		return (ft_sanitize(&stacks));
@@ -37,7 +38,6 @@ int	main(int argc, char **argv)
 
 
 	//ft_printf("Min an der stelle: %d\n",ft_search_min_bottom(&stacks, 4, ft_lstsize(stacks.sa)));
-	//ft_put_stack(&stacks);
 	//Example from pdf
 	// ft_put_stack(&stacks);
 	// ft_swap(&stacks,"sa");
