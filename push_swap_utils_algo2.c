@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:13:15 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/19 15:22:46 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/22 11:28:57 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int	ft_search_min_bottom(t_s *stp, int srch_len, int size)
 	int		i;
 	int		count;
 
-	count = 0;
+	count = size;
 	tmp = stp->sa;
 	i = 1 * size;
 	min = size;
 	if (size < 3)
 		return (1);
-	while (size--)
+	while (count--)
 	{
 		tmp = tmp -> next;
 		//if (size < srch_len + 1 && size > 0 && ((t_s_c *)tmp->content)->position < min)
-		if (size < srch_len + 1 && size > 0 && ft_is_chunk(((t_s_c *)tmp->content)->position, size, 10, stp))
+		if (size < srch_len + 1 && size > 0 && ft_is_chunk(((t_s_c *)tmp->content)->position, size, 20, stp))
 		{
 			// min = ((t_s_c *)stp->sa->content)->position;
 			// i = size;
@@ -52,6 +52,7 @@ int	ft_search_min_top(t_s *stp, int srch_len, int size)
 	tmp = stp->sa;
 	i = 0;
 	min = ((t_s_c *)stp->sa->content)->position;
+	//ft_printf("%d\n",size);
 	if (size < 3)
 		return (0);
 	while (count < size - 1)
@@ -59,7 +60,7 @@ int	ft_search_min_top(t_s *stp, int srch_len, int size)
 		tmp = tmp -> next;
 		count++;
 		// if (((t_s_c *)tmp->content)->position < min && count < srch_len)
-		if (count < srch_len + 1 && ft_is_chunk(((t_s_c *)tmp->content)->position, size, 10, stp))
+		if (count < srch_len + 1 && ft_is_chunk(((t_s_c *)tmp->content)->position, size, 20, stp))
 		{
 			// min = ((t_s_c *)tmp->content)->position;
 			// i = count;
