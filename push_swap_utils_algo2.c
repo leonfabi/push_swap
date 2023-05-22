@@ -6,71 +6,33 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:13:15 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/22 11:28:57 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/22 13:40:32 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_search_min_bottom(t_s *stp, int srch_len, int size)
+void	ft_is_in_A(t_s *stp, int position)
 {
-	t_list	*tmp;
-	int		min;
-	int		i;
-	int		count;
+	t_list	*tmpa;
+	t_list	*tmpb;
 
-	count = size;
-	tmp = stp->sa;
-	i = 1 * size;
-	min = size;
-	if (size < 3)
-		return (1);
-	while (count--)
+	tmpa = stp->sa;
+	while (tmpa)
 	{
-		tmp = tmp -> next;
-		//if (size < srch_len + 1 && size > 0 && ((t_s_c *)tmp->content)->position < min)
-		if (size < srch_len + 1 && size > 0 && ft_is_chunk(((t_s_c *)tmp->content)->position, size, 20, stp))
-		{
-			// min = ((t_s_c *)stp->sa->content)->position;
-			// i = size;
-			i = size;
-			return (i);
-		}
+		if (((t_s_c *)tmpa->content)->position == position)
+			return (1);
+			tmpa = tmpa->next;
+	}
+	while (tmpb)
+	{
+		if (((t_s_c *)tmpb->content)->position == position)
+			return (0);
+			tmpb = tmpb->next;
 	}
 	return (-1);
-	//return (i);
 }
 
-int	ft_search_min_top(t_s *stp, int srch_len, int size)
-{
-	t_list	*tmp;
-	int		min;
-	int		i;
-	int		count;
-
-	count = 0;
-	tmp = stp->sa;
-	i = 0;
-	min = ((t_s_c *)stp->sa->content)->position;
-	//ft_printf("%d\n",size);
-	if (size < 3)
-		return (0);
-	while (count < size - 1)
-	{
-		tmp = tmp -> next;
-		count++;
-		// if (((t_s_c *)tmp->content)->position < min && count < srch_len)
-		if (count < srch_len + 1 && ft_is_chunk(((t_s_c *)tmp->content)->position, size, 20, stp))
-		{
-			// min = ((t_s_c *)tmp->content)->position;
-			// i = count;
-			i = count;
-			return (i);
-		}
-	}
-	return (-1);
-	//return (i);
-}
 void	ft_rotate_pb_min(t_s *stp, int position)
 {
 	int		i;
@@ -98,32 +60,6 @@ void	ft_rotate_pb_min(t_s *stp, int position)
 		while (i--)
 			ft_rotate(stp,"rb");
 	}
-}
-void	ft_push_to_b_low_cost(t_s *stp, int srch_len, int size)
-{
-	int	ra;
-	int	rra;
-
-	ra = ft_search_min_top(stp, srch_len, size);
-	rra = ft_search_min_bottom(stp, srch_len, size);
-	//ft_printf("ra:%d,\nrra:%d\n", ra, rra);
-	if (ra == -1 && rra == -1)
-	{
-		ft_rotate(stp,"ra");
-		return ;
-	}
-	//if (ra <= rra)
-	if ((ra <= rra && ra != -1) || rra == -1)
-	{
-		while (ra--)
-			ft_rotate(stp, "ra");
-	}
-	else
-	{
-		while (rra--)
-			ft_rotate(stp, "rra");
-	}
-	ft_push(stp,"pb");
 }
 void	ft_sort(t_s *stp)
 {
