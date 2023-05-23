@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:59:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 15:01:58 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 15:57:27 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,39 @@ int	ft_stack_max(t_s *stp, char *stack, int max)
 //find element in b with smallest amount of moves to push to a
 //determine where in A it has to go
 //determine how B has to be modified and how A has to be modified
+int		ft_p_in_a_mm(t_s *stp, int max, int value)
+{
+	t_list	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = stp->sa;
+	while (((t_s_c*)tmp->c)->p != value)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	if (max)
+		return (i + 1);
+	else
+		return (i);
+}
 
 int		ft_find_final_p_in_a(t_s *stp, int p)
 {
 	t_list	*tmp;
 	t_list	*prev;
 	int		i;
-	int		debug1=0;
-	int		debug2=0;
 
 	tmp = stp->sa;
 	prev = ft_lstlast(tmp);
 	i = 0;
+	if (ft_stack_max(stp, "A", 1) < p)
+		return (ft_p_in_a_mm(stp, 1, ft_stack_max(stp, "A", 1)));
+	if (ft_stack_max(stp, "A", 0) > p)
+		return (ft_p_in_a_mm(stp, 0, ft_stack_max(stp, "A", 0)));
 	while (i < ft_lstsize(stp->sa))
 	{
-		debug1=((t_s_c*)tmp->c)->p;
-		debug2=((t_s_c*)prev->c)->p;
 		if(p < ((t_s_c*)tmp->c)->p && p > ((t_s_c*)prev->c)->p)
 			return (i);
 		i++;
