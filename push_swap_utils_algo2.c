@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:00:39 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 10:20:03 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 11:40:23 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,28 @@ void	ft_rotate_pb_min(t_s *stp, int position)
 			ft_rotate(stp,"rb");
 	}
 }
+void	ft_make_move_to_b(t_s *stp, int a, int b, int c)
+{
+	t_list	*tmp;
+	int		rr;
+
+	tmp = stp->sa;
+	rr = 0;
+	if (((t_s_c *)tmp->content)->position >= a && b > ((t_s_c *)tmp->content)->position)
+	{
+		if (tmp->next != NULL && c < ((t_s_c *)tmp->next->content)->position)
+			rr = 1;
+		ft_push(stp, "pb");
+		if (rr)
+			ft_rotate(stp, "rr");
+		else
+			ft_rotate(stp, "rb");
+	}
+	else if (((t_s_c *)tmp->content)->position >= b && c >= ((t_s_c *)tmp->content)->position)
+		ft_push(stp, "pb");
+	else
+		ft_rotate(stp, "ra");
+}
 
 int	ft_push_to_b(t_s *stp, int old, int length)
 {
@@ -85,28 +107,18 @@ int	ft_push_to_b(t_s *stp, int old, int length)
 	int	c;
 
 	a = old;
-	b = (length - a - 1) / 3 + (length - a - 1) % 3 + a;
-	c = 2 * (length - a - 1) / 3 + 2 * (length - a - 1) % 3 + a;
+	b = (length - a - 1) / 7 + (length - a - 1) % 7 + a;
+	c = 2 * (length - a - 1) / 7 + 2 * (length - a - 1) % 7 + a;
 	tmp = stp->sa;
 	while (ft_is_all_B(stp, c) && ft_lstsize(tmp) > 3)
 	{
-		//ft_printf("Position:%d\t|%d|%d|%d|\tEndbedingung:%d\tListelaenge:%d\n",((t_s_c *)tmp->content)->position,a,b,c,(length-old - 1)/3 + (length-old - 1)%3,ft_lstsize(tmp));
-		if (((t_s_c *)tmp->content)->position >= a && b > ((t_s_c *)tmp->content)->position)
-		{
-			ft_push(stp, "pb");
-			if (tmp->next != NULL && c < ((t_s_c *)tmp->next->content)->position)
-				ft_rotate(stp, "rr");
-			else
-				ft_rotate(stp, "rb");
-		}
-		else if (((t_s_c *)tmp->content)->position >= b && c >= ((t_s_c *)tmp->content)->position)
-			ft_push(stp, "pb");
-		else
-			ft_rotate(stp, "ra");
+		//ft_printf("Position:%d\t|%d|%d|%d|\tEndbedingung:%d\tListelaenge:%d\n",((t_s_c *)tmp->content)->position,a,b,c,(length-old - 1)/7 + (length-old - 1)%3,ft_lstsize(tmp));
+		ft_make_move_to_b(stp, a, b, c);
 		tmp = stp->sa;
 	}
-	return ((length-old)/3*2+old);
+	return ((length-a)/7*2+a);
 }
+
 
 void	ft_sort(t_s *stp)
 {
@@ -120,12 +132,12 @@ void	ft_sort(t_s *stp)
 		old = ft_push_to_b(stp, old, length);
 	ft_sort_3(stp);
 	//ft_call_sort_algo(stp);
-	// while (length--)
-	// {
-	// 	if (!ft_is_in_A(stp, length))
-	// 	{
-	// 		ft_rotate_pb_min(stp, length);
-	// 		ft_push(stp, "pa");
-	// 	}
-	// }
+	while (length--)
+	{
+		if (!ft_is_in_A(stp, length))
+		{
+			ft_rotate_pb_min(stp, length);
+			ft_push(stp, "pa");
+		}
+	}
 }
