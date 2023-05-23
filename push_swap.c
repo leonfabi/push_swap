@@ -6,22 +6,22 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 14:29:27 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 15:03:06 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	ft_call_sort_algo(t_s *stp)
-{
-	if (ft_lstsize(stp->sa) == 2)
-		ft_swap(stp, "sa");
-	else if (ft_lstsize(stp->sa) == 3)
-		ft_sort_3(stp);
-	else
-		ft_sort(stp);
-}
+// void	ft_call_sort_algo(t_s *stp)
+// {
+// 	if (ft_lstsize(stp->sa) == 2)
+// 		ft_swap(stp, "sa");
+// 	else if (ft_lstsize(stp->sa) == 3)
+// 		ft_sort_3(stp);
+// 	else
+// 		ft_sort(stp);
+// }
 
 int	main(int argc, char **argv)
 {
@@ -33,16 +33,19 @@ int	main(int argc, char **argv)
 	if (argc < 2 || stacks.length == -1)
 		return (EXIT_FAILURE);
 	ft_init_p(&stacks);
+	ft_push(&stacks, "pb");
+	ft_put_stack(&stacks);
+	ft_printf("Position of B element in A:|%d|\n", ft_find_final_p_in_a(&stacks, ((t_s_c*)stacks.sb->c)->p));
 
 
-	if (ft_is_sorted(&stacks))
-		return (ft_sanitize(&stacks));
-	else if (ft_lstsize(stacks.sa) == 2)
-		ft_swap(&stacks, "sa");
-	else if (ft_lstsize(stacks.sa) == 3)
-		ft_sort_3(&stacks);
-	else
-		ft_sort(&stacks);
+	// if (ft_is_sorted(&stacks))
+	// 	return (ft_sanitize(&stacks));
+	// else if (ft_lstsize(stacks.sa) == 2)
+	// 	ft_swap(&stacks, "sa");
+	// else if (ft_lstsize(stacks.sa) == 3)
+	// 	ft_sort_3(&stacks);
+	// else
+	// 	ft_sort(&stacks);
 
 
 

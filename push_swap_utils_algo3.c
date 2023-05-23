@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:59:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 14:28:51 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 15:01:58 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,32 @@ int	ft_stack_max(t_s *stp, char *stack, int max)
 //determine where in A it has to go
 //determine how B has to be modified and how A has to be modified
 
-// int		ft_find_final_p_in_a(t_s *stp, int p)
-// {
-// 	t_list	*tmp;
-// 	t_list	*prev;
-// 	int		cond1;
-// 	int		cond2;
-// 	int		i;
+int		ft_find_final_p_in_a(t_s *stp, int p)
+{
+	t_list	*tmp;
+	t_list	*prev;
+	int		i;
+	int		debug1=0;
+	int		debug2=0;
 
-// 	tmp = stp->sa;
-// 	prev = ft_lstlast(tmp);
-// 	cond1 = 0;
-// 	cond2 = 0;
-// 	i = 0;
-// 	while (tmp)
-// 	{
-// 		if(p > ((t_s_c*)tmp->c)->p)
-// 			cond1 = 1;
-// 		if(p < ((t_s_c*)prev->c)->p)
-// 			cond2 = 1;
-// 		if (cond1 && cond2)
-// 			return (i);
-// 		i++;
-// 		prev = tmp;
-		
-// 	}
-// }
+	tmp = stp->sa;
+	prev = ft_lstlast(tmp);
+	i = 0;
+	while (i < ft_lstsize(stp->sa))
+	{
+		debug1=((t_s_c*)tmp->c)->p;
+		debug2=((t_s_c*)prev->c)->p;
+		if(p < ((t_s_c*)tmp->c)->p && p > ((t_s_c*)prev->c)->p)
+			return (i);
+		i++;
+		prev = tmp;
+		if (tmp->next == NULL)
+			tmp = stp->sa;
+		else
+			tmp = tmp->next;
+	}
+	return (-1);
+}
 
 void	ft_push_to_a(t_s *stp)
 {
