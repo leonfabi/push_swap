@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 12:13:15 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/22 20:17:55 by fkrug            ###   ########.fr       */
+/*   Created: 2023/05/23 10:00:39 by fkrug             #+#    #+#             */
+/*   Updated: 2023/05/23 10:20:03 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ int	ft_push_to_b(t_s *stp, int old, int length)
 	int	c;
 
 	a = old;
-	b = (length - a - 1) / 9 + (length - a - 1) % 9 + a;
-	c = 2 * (length - a - 1) / 9 + 2 * (length - a - 1) % 9 + a;
+	b = (length - a - 1) / 3 + (length - a - 1) % 3 + a;
+	c = 2 * (length - a - 1) / 3 + 2 * (length - a - 1) % 3 + a;
 	tmp = stp->sa;
-	while (ft_is_all_B(stp, c))
+	while (ft_is_all_B(stp, c) && ft_lstsize(tmp) > 3)
 	{
 		//ft_printf("Position:%d\t|%d|%d|%d|\tEndbedingung:%d\tListelaenge:%d\n",((t_s_c *)tmp->content)->position,a,b,c,(length-old - 1)/3 + (length-old - 1)%3,ft_lstsize(tmp));
 		if (((t_s_c *)tmp->content)->position >= a && b > ((t_s_c *)tmp->content)->position)
@@ -105,7 +105,7 @@ int	ft_push_to_b(t_s *stp, int old, int length)
 			ft_rotate(stp, "ra");
 		tmp = stp->sa;
 	}
-	return ((length-old)/9*2+old);
+	return ((length-old)/3*2+old);
 }
 
 void	ft_sort(t_s *stp)
@@ -115,16 +115,17 @@ void	ft_sort(t_s *stp)
 
 	old = 0;
 	length = stp->length;
-	while (old < length - 9)
-	{
+	//while (old < length - 10 && ft_lstsize(stp->sa) > 3)
+	while(ft_lstsize(stp->sa) > 3)
 		old = ft_push_to_b(stp, old, length);
-	}
-	while (length--)
-	{
-		if (!ft_is_in_A(stp, length))
-		{
-			ft_rotate_pb_min(stp, length);
-			ft_push(stp, "pa");
-		}
-	}
+	ft_sort_3(stp);
+	//ft_call_sort_algo(stp);
+	// while (length--)
+	// {
+	// 	if (!ft_is_in_A(stp, length))
+	// 	{
+	// 		ft_rotate_pb_min(stp, length);
+	// 		ft_push(stp, "pa");
+	// 	}
+	// }
 }

@@ -6,12 +6,22 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/22 16:20:40 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 08:16:32 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+void	ft_call_sort_algo(t_s *stp)
+{
+	if (ft_lstsize(stp->sa) == 2)
+		ft_swap(stp, "sa");
+	else if (ft_lstsize(stp->sa) == 3)
+		ft_sort_3(stp);
+	else
+		ft_sort(stp);
+}
 
 int	main(int argc, char **argv)
 {
@@ -23,9 +33,7 @@ int	main(int argc, char **argv)
 	if (argc < 2 || stacks.length == -1)
 		return (EXIT_FAILURE);
 	ft_init_position(&stacks);
-	//ft_printf("Is in chunk? %d", ft_is_chunk(0, ft_lstsize(stacks.sa), 2, &stacks));
-	//ft_printf("Is in chunk? %d", ft_is_chunk(3, ft_lstsize(stacks.sa), 2, &stacks));
-	//ft_put_stack(&stacks);
+
 
 	if (ft_is_sorted(&stacks))
 		return (ft_sanitize(&stacks));
@@ -37,7 +45,7 @@ int	main(int argc, char **argv)
 		ft_sort(&stacks);
 
 
-	//ft_printf("Min an der stelle: %d\n",ft_search_min_bottom(&stacks, 4, ft_lstsize(stacks.sa)));
+
 	//Example from pdf
 	// ft_put_stack(&stacks);
 	// ft_swap(&stacks,"sa");

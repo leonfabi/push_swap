@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/19 14:08:59 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 08:16:53 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void	ft_rotate(t_s *stp, char *operation);
 void	ft_sort_3(t_s *stp);
 void	ft_sort(t_s *stp);
 int		ft_is_chunk(int position, int size, int chunk_size, t_s *stp);
+void	ft_call_sort_algo(t_s *stp);
 
 #endif
