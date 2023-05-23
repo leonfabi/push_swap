@@ -6,7 +6,7 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 13:38:07 by fkrug             #+#    #+#              #
-#    Updated: 2023/05/23 19:10:52 by fkrug            ###   ########.fr        #
+#    Updated: 2023/05/23 20:37:52 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ NAME := push_swap
 
 CC := cc
 #CFLAGS := -Wall -Wextra -Werror -fsanitize=address -g
-CFLAGS := -Wall -Wextra -g
-#-fsanitize=address -g
+CFLAGS := -Wall -Wextra -fsanitize=address -g
 LIBFT_DIR = Libft
 LIBFT = $(LIBFT_DIR)/libft.a
 

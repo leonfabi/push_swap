@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:59:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 19:38:50 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 20:28:26 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	ft_rarb_sum(int ra, int rb)
 	return (sum);
 }
 
-int	ft_calc_moves(t_s *stp, int p)
+int	ft_calc_min_moves(t_s *stp, int p)
 {
 	int	ra;
 	int	rb;
@@ -135,11 +135,11 @@ int	ft_calc_moves(t_s *stp, int p)
 	sum = rra + rb;
 	if (sum > rrb + ra)
 		sum = rrb + ra;
-	sum = ft_rarb_sum(2,2);
-	sum = ft_rarb_sum(10,0);
-	sum = ft_rarb_sum(10,5);
-	sum = ft_rarb_sum(4,2);
-	return (0);
+	if (sum > ft_rarb_sum(ra, rb))
+		sum = ft_rarb_sum(ra, rb);
+	if (sum > ft_rarb_sum(rra, rrb))
+		sum = ft_rarb_sum(rra, rrb);
+	return (sum);
 }
 
 void	ft_push_to_a(t_s *stp)
@@ -153,7 +153,7 @@ void	ft_push_to_a(t_s *stp)
 	tmp = stp->sb;
 	while (tmp)
 	{
-		move = ft_calc_moves(stp,((t_s_c*)tmp->c)->p);
+		move = ft_calc_min_moves(stp,((t_s_c*)tmp->c)->p);
 		if (move < min)
 			min = move;
 		tmp = tmp->next;
