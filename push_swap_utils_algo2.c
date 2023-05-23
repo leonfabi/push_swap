@@ -6,13 +6,13 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:00:39 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 14:21:14 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 14:28:42 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_is_in_A(t_s *stp, int position)
+int	ft_is_in_A(t_s *stp, int p)
 {
 	t_list	*tmpa;
 	t_list	*tmpb;
@@ -21,24 +21,24 @@ int	ft_is_in_A(t_s *stp, int position)
 	tmpb = stp->sb;
 	while (tmpa)
 	{
-		if (((t_s_c *)tmpa->c)->position == position)
+		if (((t_s_c *)tmpa->c)->p == p)
 			return (1);
 		tmpa = tmpa->next;
 	}
 	while (tmpb)
 	{
-		if (((t_s_c *)tmpb->c)->position == position)
+		if (((t_s_c *)tmpb->c)->p == p)
 			return (0);
 		tmpb = tmpb->next;
 	}
 	return (0);
 }
 
-int	ft_is_all_B(t_s *stp, int position)
+int	ft_is_all_B(t_s *stp, int p)
 {
 	int	i = 0;
 
-	while (i <= position)
+	while (i <= p)
 	{
 		if (ft_is_in_A(stp, i))
 			return (1);
@@ -47,7 +47,7 @@ int	ft_is_all_B(t_s *stp, int position)
 	return (0);
 }
 
-void	ft_rotate_pb_min(t_s *stp, int position)
+void	ft_rotate_pb_min(t_s *stp, int p)
 {
 	int		i;
 	t_list	*tmp;
@@ -56,7 +56,7 @@ void	ft_rotate_pb_min(t_s *stp, int position)
 	i = 0;
 	while (tmp)
 	{
-		if (((t_s_c *)tmp->c)->position == position)
+		if (((t_s_c *)tmp->c)->p == p)
 			tmp = NULL;
 		else
 		{
@@ -82,9 +82,9 @@ void	ft_make_move_to_b(t_s *stp, int a, int b, int c)
 
 	tmp = stp->sa;
 	rr = 0;
-	if (((t_s_c *)tmp->c)->position >= a && b > ((t_s_c *)tmp->c)->position)
+	if (((t_s_c *)tmp->c)->p >= a && b > ((t_s_c *)tmp->c)->p)
 	{
-		if (tmp->next != NULL && c < ((t_s_c *)tmp->next->c)->position)
+		if (tmp->next != NULL && c < ((t_s_c *)tmp->next->c)->p)
 			rr = 1;
 		ft_push(stp, "pb");
 		if (rr)
@@ -92,7 +92,7 @@ void	ft_make_move_to_b(t_s *stp, int a, int b, int c)
 		else
 			ft_rotate(stp, "rb");
 	}
-	else if (((t_s_c *)tmp->c)->position >= b && c >= ((t_s_c *)tmp->c)->position)
+	else if (((t_s_c *)tmp->c)->p >= b && c >= ((t_s_c *)tmp->c)->p)
 		ft_push(stp, "pb");
 	else
 		ft_rotate(stp, "ra");
@@ -112,7 +112,7 @@ int	ft_push_to_b(t_s *stp, int old, int length)
 	tmp = stp->sa;
 	while (ft_is_all_B(stp, c) && ft_lstsize(tmp) > 3)
 	{
-		//ft_printf("Position:%d\t|%d|%d|%d|\tEndbedingung:%d\tListelaenge:%d\n",((t_s_c *)tmp->c)->position,a,b,c,(length-old - 1)/7 + (length-old - 1)%3,ft_lstsize(tmp));
+		//ft_printf("p:%d\t|%d|%d|%d|\tEndbedingung:%d\tListelaenge:%d\n",((t_s_c *)tmp->c)->p,a,b,c,(length-old - 1)/7 + (length-old - 1)%3,ft_lstsize(tmp));
 		ft_make_move_to_b(stp, a, b, c);
 		tmp = stp->sa;
 	}

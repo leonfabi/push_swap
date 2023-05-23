@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:40:40 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 14:21:40 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 14:28:59 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_str_valid(char *str)
 	return (1);
 }
 
-t_s_c	*ft_cnew(int number, int position)
+t_s_c	*ft_cnew(int number, int p)
 {
 	t_s_c	*start;
 
@@ -42,7 +42,7 @@ t_s_c	*ft_cnew(int number, int position)
 	if (start == NULL)
 		return (NULL);
 	start->number = number;
-	start->position = position;
+	start->p = p;
 	return (start);
 }
 

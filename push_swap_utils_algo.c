@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:03:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 14:20:58 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 14:28:31 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_parse(t_s *stp, int *arr, int size)
 		{
 			if (arr[i] == ((t_s_c *)tmp->c)->number)
 			{
-				((t_s_c *)tmp->c)->position = i;
+				((t_s_c *)tmp->c)->p = i;
 				i = size;
 			}
 			i++;
@@ -60,7 +60,7 @@ void	ft_parse(t_s *stp, int *arr, int size)
 	}
 }
 
-void	ft_init_position(t_s *stp)
+void	ft_init_p(t_s *stp)
 {
 	int	*array;
 	int	length;
