@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:03:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/15 12:08:40 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 14:20:58 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	ft_parse(t_s *stp, int *arr, int size)
 		i = 0;
 		while (i < size)
 		{
-			if (arr[i] == ((t_s_c *)tmp->content)->number)
+			if (arr[i] == ((t_s_c *)tmp->c)->number)
 			{
-				((t_s_c *)tmp->content)->position = i;
+				((t_s_c *)tmp->c)->position = i;
 				i = size;
 			}
 			i++;
@@ -75,7 +75,7 @@ void	ft_init_position(t_s *stp)
 		return ;
 	while (i < length)
 	{
-		array[i++] = ((t_s_c *)tmp->content)->number;
+		array[i++] = ((t_s_c *)tmp->c)->number;
 		tmp = tmp->next;
 	}
 	ft_bubbleSort(array, length);
@@ -92,8 +92,8 @@ int	ft_is_sorted(t_s *stp)
 	tmp = stp->sa;
 	while(tmp->next)
 	{
-		a = ((t_s_c *)tmp->content)->number;
-		b = ((t_s_c *)tmp->next->content)->number;
+		a = ((t_s_c *)tmp->c)->number;
+		b = ((t_s_c *)tmp->next->c)->number;
 		if (a > b)
 			return (0);
 		tmp = tmp->next;
@@ -107,9 +107,9 @@ void	ft_sort_3(t_s *stp)
 	int	b;
 	int	c;
 
-	a = ((t_s_c *)stp->sa->content)->number;
-	b = ((t_s_c *)stp->sa->next->content)->number;
-	c = ((t_s_c *)stp->sa->next->next->content)->number;
+	a = ((t_s_c *)stp->sa->c)->number;
+	b = ((t_s_c *)stp->sa->next->c)->number;
+	c = ((t_s_c *)stp->sa->next->next->c)->number;
 	if (ft_is_sorted(stp))
 		return ;
 	else if (a > b && c > a && c > b)

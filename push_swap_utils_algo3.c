@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:59:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 14:18:41 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 14:21:30 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	ft_stack_max(t_s *stp, char *stack, int max)
 		tmp = stp->sb;
 	while (tmp)
 	{
-		if (position < ((t_s_c*)tmp->content)->position && max == 1)
-			position = ((t_s_c*)tmp->content)->position;
-		if (position > ((t_s_c*)tmp->content)->position && max == 0)
-			position = ((t_s_c*)tmp->content)->position;
+		if (position < ((t_s_c*)tmp->c)->position && max == 1)
+			position = ((t_s_c*)tmp->c)->position;
+		if (position > ((t_s_c*)tmp->c)->position && max == 0)
+			position = ((t_s_c*)tmp->c)->position;
 		tmp = tmp->next;
 	}
 	return (position);
@@ -54,9 +54,9 @@ int	ft_stack_max(t_s *stp, char *stack, int max)
 // 	i = 0;
 // 	while (tmp)
 // 	{
-// 		if(position > ((t_s_c*)tmp->content)->position)
+// 		if(position > ((t_s_c*)tmp->c)->position)
 // 			cond1 = 1;
-// 		if(position < ((t_s_c*)prev->content)->position)
+// 		if(position < ((t_s_c*)prev->c)->position)
 // 			cond2 = 1;
 // 		if (cond1 && cond2)
 // 			return (i);

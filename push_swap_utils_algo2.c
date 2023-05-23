@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:00:39 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 12:20:05 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 14:21:14 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	ft_is_in_A(t_s *stp, int position)
 	tmpb = stp->sb;
 	while (tmpa)
 	{
-		if (((t_s_c *)tmpa->content)->position == position)
+		if (((t_s_c *)tmpa->c)->position == position)
 			return (1);
 		tmpa = tmpa->next;
 	}
 	while (tmpb)
 	{
-		if (((t_s_c *)tmpb->content)->position == position)
+		if (((t_s_c *)tmpb->c)->position == position)
 			return (0);
 		tmpb = tmpb->next;
 	}
@@ -56,7 +56,7 @@ void	ft_rotate_pb_min(t_s *stp, int position)
 	i = 0;
 	while (tmp)
 	{
-		if (((t_s_c *)tmp->content)->position == position)
+		if (((t_s_c *)tmp->c)->position == position)
 			tmp = NULL;
 		else
 		{
@@ -82,9 +82,9 @@ void	ft_make_move_to_b(t_s *stp, int a, int b, int c)
 
 	tmp = stp->sa;
 	rr = 0;
-	if (((t_s_c *)tmp->content)->position >= a && b > ((t_s_c *)tmp->content)->position)
+	if (((t_s_c *)tmp->c)->position >= a && b > ((t_s_c *)tmp->c)->position)
 	{
-		if (tmp->next != NULL && c < ((t_s_c *)tmp->next->content)->position)
+		if (tmp->next != NULL && c < ((t_s_c *)tmp->next->c)->position)
 			rr = 1;
 		ft_push(stp, "pb");
 		if (rr)
@@ -92,7 +92,7 @@ void	ft_make_move_to_b(t_s *stp, int a, int b, int c)
 		else
 			ft_rotate(stp, "rb");
 	}
-	else if (((t_s_c *)tmp->content)->position >= b && c >= ((t_s_c *)tmp->content)->position)
+	else if (((t_s_c *)tmp->c)->position >= b && c >= ((t_s_c *)tmp->c)->position)
 		ft_push(stp, "pb");
 	else
 		ft_rotate(stp, "ra");
@@ -112,7 +112,7 @@ int	ft_push_to_b(t_s *stp, int old, int length)
 	tmp = stp->sa;
 	while (ft_is_all_B(stp, c) && ft_lstsize(tmp) > 3)
 	{
-		//ft_printf("Position:%d\t|%d|%d|%d|\tEndbedingung:%d\tListelaenge:%d\n",((t_s_c *)tmp->content)->position,a,b,c,(length-old - 1)/7 + (length-old - 1)%3,ft_lstsize(tmp));
+		//ft_printf("Position:%d\t|%d|%d|%d|\tEndbedingung:%d\tListelaenge:%d\n",((t_s_c *)tmp->c)->position,a,b,c,(length-old - 1)/7 + (length-old - 1)%3,ft_lstsize(tmp));
 		ft_make_move_to_b(stp, a, b, c);
 		tmp = stp->sa;
 	}

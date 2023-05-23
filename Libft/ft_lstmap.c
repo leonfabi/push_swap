@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrug <fkrug@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:47:38 by fkrug             #+#    #+#             */
-/*   Updated: 2023/03/28 18:31:34 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 14:24:46 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		return (NULL);
 	while (lst)
 	{
-		add = ft_lstnew((*f)(lst->content));
+		add = ft_lstnew((*f)(lst->c));
 		if (!add)
 		{
 			ft_lstclear(&head, *del);

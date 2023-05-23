@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkrug <fkrug@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:37:21 by fkrug             #+#    #+#             */
-/*   Updated: 2023/03/28 16:01:53 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 14:24:34 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		return ;
 	while (lst)
 	{
-		(*f)(lst->content);
+		(*f)(lst->c);
 		lst = lst->next;
 	}
 }
