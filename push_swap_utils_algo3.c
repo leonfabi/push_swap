@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:59:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 15:57:27 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 19:38:50 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,79 @@ int		ft_find_final_p_in_a(t_s *stp, int p)
 	return (-1);
 }
 
+int	ft_rotate_top(t_s *stp, int p, char *stack, int rev)
+{
+	t_list	*tmp;
+	int		i;
+	int		length;
+
+	i = 0;
+	if (!ft_strncmp(stack, "A", 2))
+		tmp = stp->sa;
+	else if (!ft_strncmp(stack, "B", 2))
+		tmp = stp->sb;
+	length = ft_lstsize(tmp);
+	while (tmp && p != ((t_s_c*)tmp->c)->p)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	if (rev)
+		return (length - i);
+	else
+		return (i);
+}
+int	ft_rarb_sum(int ra, int rb)
+{
+	int	sum;
+
+	sum = 0;
+	while (ra && rb)
+	{
+		sum++;
+		ra--;
+		rb--;
+	}
+	sum = sum + ra + rb;
+	return (sum);
+}
+
+int	ft_calc_moves(t_s *stp, int p)
+{
+	int	ra;
+	int	rb;
+	int	rra;
+	int	rrb;
+	int	sum;
+
+	ra = ft_find_final_p_in_a(stp, p);
+	rra = ft_lstsize(stp->sa) - ra;
+	rb = ft_rotate_top(stp, p, "B", 0);
+	rrb = ft_rotate_top(stp, p, "B", 1);
+	sum = rra + rb;
+	if (sum > rrb + ra)
+		sum = rrb + ra;
+	sum = ft_rarb_sum(2,2);
+	sum = ft_rarb_sum(10,0);
+	sum = ft_rarb_sum(10,5);
+	sum = ft_rarb_sum(4,2);
+	return (0);
+}
+
 void	ft_push_to_a(t_s *stp)
 {
-	
+	int		min;
+	int		move;
+	t_list	*tmp;
+
+	min = stp->length;
+	move = 0;
+	tmp = stp->sb;
+	while (tmp)
+	{
+		move = ft_calc_moves(stp,((t_s_c*)tmp->c)->p);
+		if (move < min)
+			min = move;
+		tmp = tmp->next;
+	}
 }

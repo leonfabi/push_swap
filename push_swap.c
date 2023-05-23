@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 15:03:06 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 19:17:54 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	ft_init_p(&stacks);
 	ft_push(&stacks, "pb");
+	ft_push(&stacks, "pb");
+	ft_push(&stacks, "pb");
 	ft_put_stack(&stacks);
-	ft_printf("Position of B element in A:|%d|\n", ft_find_final_p_in_a(&stacks, ((t_s_c*)stacks.sb->c)->p));
-
+	ft_calc_moves(&stacks, 4);
+	ft_calc_moves(&stacks, 0);
+	ft_calc_moves(&stacks, 3);
+	//ft_printf("Position of B element in A:|%d|\n", ft_find_final_p_in_a(&stacks, ((t_s_c*)stacks.sb->c)->p));
+	//ft_printf("Rotate to top: |%d|\tReverse:|%d|\n", ft_rotate_top(&stacks,0,"A",0),ft_rotate_top(&stacks,0,"A",1));
 
 	// if (ft_is_sorted(&stacks))
 	// 	return (ft_sanitize(&stacks));

@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 14:35:35 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/23 19:11:50 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void	ft_sort(t_s *stp);
 int		ft_is_chunk(int p, int size, int chunk_size, t_s *stp);
 void	ft_call_sort_algo(t_s *stp);
 int		ft_find_final_p_in_a(t_s *stp, int p);
+int		ft_rotate_top(t_s *stp, int p, char *stack, int rev);
+int		ft_calc_moves(t_s *stp, int p);
 
 #endif
