@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:00:39 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 21:33:37 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 21:53:14 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,19 @@ int	ft_push_to_b(t_s *stp, int old, int length)
 	int		a;
 	int		b;
 	int		c;
+	int		split;
 
+	split = SPLIT_100;
+	if (stp->length > 100)
+		split = SPLIT_500;
 	a = old;
-	b = (length - a - 1) / 3 + (length - a - 1) % 3 + a;
-	c = 2 * (length - a - 1) / 3 + 2 * (length - a - 1) % 3 + a;
+	b = (length - a - 1) / split + (length - a - 1) % split + a;
+	c = 2 * (length - a - 1) / split + 2 * (length - a - 1) % split + a;
 	tmp = stp->sa;
 	while (ft_is_all_b(stp, c) && ft_lstsize(tmp) > 3)
 	{
 		ft_make_move_to_b(stp, a, b, c);
 		tmp = stp->sa;
 	}
-	return ((length - a) / 3 * 2 + a);
+	return ((length - a) / split * 2 + a);
 }

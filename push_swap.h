@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 21:46:54 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 22:23:11 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "Libft/libft.h"
 # include "limits.h"
 # define SPLIT_100 3
-# define SPLIT_500 7
+# define SPLIT_500 4
 
 typedef struct s_stack_content{
 	int	number;
