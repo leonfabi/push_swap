@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:59:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 20:28:26 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 15:02:56 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	ft_rotate_top(t_s *stp, int p, char *stack, int rev)
 	else
 		return (i);
 }
-int	ft_rarb_sum(int ra, int rb)
+int	ft_rarb_sum(int ra, int rb, int double_rotate)
 {
 	int	sum;
 
@@ -116,10 +116,64 @@ int	ft_rarb_sum(int ra, int rb)
 		ra--;
 		rb--;
 	}
+	if (double_rotate)
+		return (sum);
 	sum = sum + ra + rb;
 	return (sum);
 }
+void	ft_do_move(t_s *stp, int a, char *ao)
+{
+	while (a--)
+		ft_rotate(stp, ao);
+}
 
+void	ft_do_double_move(t_s *stp, int a, int b, char *ao)
+{
+	int	double_rotate;
+	int	single_rotate;
+
+	double_rotate = 0;
+	single_rotate = 0;
+	double_rotate = ft_rarb_sum(a, b, 1);
+	single_rotate = ft_rarb_sum(a, b, 0) - double_rotate;
+	while (double_rotate--)
+		ft_rotate(stp, ao);
+	if (a > b && !ft_strncmp(ao, "rr", 3))
+		ft_do_move(stp, single_rotate, "ra");
+	if (b > a && !ft_strncmp(ao, "rr", 3))
+		ft_do_move(stp, single_rotate, "rb");
+	if (a > b && !ft_strncmp(ao, "rrr", 4))
+		ft_do_move(stp, single_rotate, "rra");
+	if (b > a && !ft_strncmp(ao, "rrr", 4))
+		ft_do_move(stp, single_rotate, "rrb");
+}
+
+void	ft_which_move(t_s *stp, int p, int move)
+{
+	int	ra;
+	int	rb;
+	int	rra;
+	int	rrb;
+
+	ra = ft_find_final_p_in_a(stp, p);
+	rra = ft_lstsize(stp->sa) - ra;
+	rb = ft_rotate_top(stp, p, "B", 0);
+	rrb = ft_rotate_top(stp, p, "B", 1);
+	if (move == rra + rb)
+	{
+		ft_do_move(stp, rra, "rra");
+		ft_do_move(stp, rb, "rb");
+	}
+	if (move == rrb + ra)
+	{
+		ft_do_move(stp, rrb, "rrb");
+		ft_do_move(stp, ra, "ra");
+	}
+	if (move == ft_rarb_sum(ra, rb, 0))
+		ft_do_double_move(stp, ra, rb, "rr");
+	if (move == ft_rarb_sum(rra, rrb, 0))
+		ft_do_double_move(stp, rra, rrb, "rrr");
+}
 int	ft_calc_min_moves(t_s *stp, int p)
 {
 	int	ra;
@@ -135,19 +189,23 @@ int	ft_calc_min_moves(t_s *stp, int p)
 	sum = rra + rb;
 	if (sum > rrb + ra)
 		sum = rrb + ra;
-	if (sum > ft_rarb_sum(ra, rb))
-		sum = ft_rarb_sum(ra, rb);
-	if (sum > ft_rarb_sum(rra, rrb))
-		sum = ft_rarb_sum(rra, rrb);
+	if (sum > ft_rarb_sum(ra, rb, 0))
+		sum = ft_rarb_sum(ra, rb, 0);
+	if (sum > ft_rarb_sum(rra, rrb, 0))
+		sum = ft_rarb_sum(rra, rrb, 0);
+	ft_which_move(stp, p, sum);
 	return (sum);
 }
 
-void	ft_push_to_a(t_s *stp)
+
+int	ft_push_to_a(t_s *stp)
 {
 	int		min;
 	int		move;
 	t_list	*tmp;
+	int		p;
 
+	p = 0;
 	min = stp->length;
 	move = 0;
 	tmp = stp->sb;
@@ -155,7 +213,11 @@ void	ft_push_to_a(t_s *stp)
 	{
 		move = ft_calc_min_moves(stp,((t_s_c*)tmp->c)->p);
 		if (move < min)
+		{
+			p = ((t_s_c*)tmp->c)->p;
 			min = move;
+		}
 		tmp = tmp->next;
 	}
+	return (p);
 }

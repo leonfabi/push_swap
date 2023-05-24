@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:24:36 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 20:27:00 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 14:06:41 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	ft_call_sort_algo(t_s *stp);
 int		ft_find_final_p_in_a(t_s *stp, int p);
 int		ft_rotate_top(t_s *stp, int p, char *stack, int rev);
 int		ft_calc_min_moves(t_s *stp, int p);
+int		ft_push_to_a(t_s *stp);
 
 #endif
