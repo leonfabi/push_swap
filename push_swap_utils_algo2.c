@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:00:39 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 16:55:10 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 17:01:28 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	ft_push_to_b(t_s *stp, int old, int length)
 		ft_make_move_to_b(stp, a, b, c);
 		tmp = stp->sa;
 	}
-	return ((length-a)/8*2+a);
+	return ((length-a)/7*2+a);
 }
 
 
