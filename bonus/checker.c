@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 07:51:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 22:45:06 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 23:23:58 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,18 @@ char	*ft_operation_exec(char *str, t_s *stp)
 		else if (!ft_strncmp(str, "rr", 3))
 			ft_rotate(stp, str);
 	}
-	return str;
+	return (str);
 }
 
 void	ft_read_instructions(t_s *stp)
 {
 	char	*str;
 
-	while (ft_operation_exec(get_next_line(STDIN_FILENO), stp))
+	str = get_next_line(STDIN_FILENO);
+	while (ft_operation_exec(str, stp))
 	{
-		ft_printf("\n--------------------\n");
+		free (str);
+		str = get_next_line(STDIN_FILENO);
 	}
 }
 
@@ -62,6 +64,10 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	ft_init_p(&stacks);
 	ft_read_instructions(&stacks);
+	if (ft_is_sorted(&stacks))
+		ft_putstr_fd("OK", STDOUT_FILENO);
+	else
+		ft_putstr_fd("KO", STDOUT_FILENO);
 	ft_sanitize(&stacks);
 	return (1);
 }
