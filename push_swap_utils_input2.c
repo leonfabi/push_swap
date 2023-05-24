@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 10:32:05 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 16:52:46 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 17:10:34 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,13 @@ int	initialize_stack(int argc, char **argv, t_s *stp)
 		tmp = ft_split(argv[argc], ' ');
 		i = 0;
 		while (tmp[i])
+			i++;
+		while (i--)
 		{
 			if (ft_error(stp, tmp, !is_str_valid(tmp[i])))
 				return (-1);
 			ft_lstadd_front(&(stp->sa), ft_lstnew(ft_cnew(ft_atoi(tmp[i]), 0)));
 			length++;
-			i++;
 		}
 		if (ft_error(stp, tmp, ft_list_double(stp->sa)))
 			return (-1);
