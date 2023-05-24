@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 15:08:54 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 16:20:49 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 	//ft_printf("\nis sorted %d\n", ft_is_sorted(&stacks));void	ft_sort_3(t_s *stp)
 	//ft_put_stack(&stacks);
 	//ft_sort_3(&stacks);
-	//ft_put_stack(&stacks);
+	// ft_put_stack(&stacks);
 	ft_sanitize(&stacks);
 	return (EXIT_SUCCESS);
 }

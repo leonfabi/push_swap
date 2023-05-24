@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:59:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 15:02:56 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 16:20:30 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,19 +159,21 @@ void	ft_which_move(t_s *stp, int p, int move)
 	rra = ft_lstsize(stp->sa) - ra;
 	rb = ft_rotate_top(stp, p, "B", 0);
 	rrb = ft_rotate_top(stp, p, "B", 1);
+	//ft_put_stack(stp);
+	//ft_printf("Position:|%d|, RA: |%d|, RRA: |%d|, RB:|%d|, RRB:|%d|\n", p, ra, rra, rb, rrb);
 	if (move == rra + rb)
 	{
 		ft_do_move(stp, rra, "rra");
 		ft_do_move(stp, rb, "rb");
 	}
-	if (move == rrb + ra)
+	else if (move == rrb + ra)
 	{
 		ft_do_move(stp, rrb, "rrb");
 		ft_do_move(stp, ra, "ra");
 	}
-	if (move == ft_rarb_sum(ra, rb, 0))
+	else if (move == ft_rarb_sum(ra, rb, 0))
 		ft_do_double_move(stp, ra, rb, "rr");
-	if (move == ft_rarb_sum(rra, rrb, 0))
+	else if (move == ft_rarb_sum(rra, rrb, 0))
 		ft_do_double_move(stp, rra, rrb, "rrr");
 }
 int	ft_calc_min_moves(t_s *stp, int p)
@@ -193,7 +195,6 @@ int	ft_calc_min_moves(t_s *stp, int p)
 		sum = ft_rarb_sum(ra, rb, 0);
 	if (sum > ft_rarb_sum(rra, rrb, 0))
 		sum = ft_rarb_sum(rra, rrb, 0);
-	ft_which_move(stp, p, sum);
 	return (sum);
 }
 
@@ -219,5 +220,7 @@ int	ft_push_to_a(t_s *stp)
 		}
 		tmp = tmp->next;
 	}
+	ft_which_move(stp, p, min);
+	ft_push(stp, "pa");
 	return (p);
 }

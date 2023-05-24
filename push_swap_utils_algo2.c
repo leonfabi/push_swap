@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:00:39 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 20:46:54 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 16:19:59 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,12 +132,21 @@ void	ft_sort(t_s *stp)
 		old = ft_push_to_b(stp, old, length);
 	ft_sort_3(stp);
 	//ft_call_sort_algo(stp);
-	while (length--)
-	{
-		if (!ft_is_in_A(stp, length))
-		{
-			ft_rotate_pb_min(stp, length);
-			ft_push(stp, "pa");
-		}
-	}
+
+	
+	// while (length--)
+	// {
+	// 	if (!ft_is_in_A(stp, length))
+	// 	{
+	// 		ft_rotate_pb_min(stp, length);
+	// 		ft_push(stp, "pa");
+	// 	}
+	// }
+
+	while (ft_lstsize(stp->sb))
+		ft_push_to_a(stp);
+	if (ft_rotate_top(stp, 0, "A", 0) < ft_rotate_top(stp, 0, "A", 1))
+		ft_do_move(stp, ft_rotate_top(stp, 0, "A", 0), "ra");
+	else
+		ft_do_move(stp, ft_rotate_top(stp, 0, "A", 1), "rra");
 }
