@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 21:41:21 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 21:43:08 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 21:48:19 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void	ft_which_move(t_s *stp, int p, int move)
 	rra = ft_lstsize(stp->sa) - ra;
 	rb = ft_rotate_top(stp, p, "B", 0);
 	rrb = ft_rotate_top(stp, p, "B", 1);
-	//ft_put_stack(stp);
-	//ft_printf("Position:|%d|, RA: |%d|, RRA: |%d|, RB:|%d|, RRB:|%d|\n", p, ra, rra, rb, rrb);
 	if (move == rra + rb)
 	{
 		ft_do_move(stp, rra, "rra");
@@ -67,6 +65,7 @@ void	ft_which_move(t_s *stp, int p, int move)
 	else if (move == ft_rarb_sum(rra, rrb, 0))
 		ft_do_double_move(stp, rra, rrb, "rrr");
 }
+
 int	ft_calc_min_moves(t_s *stp, int p)
 {
 	int	ra;
@@ -89,7 +88,6 @@ int	ft_calc_min_moves(t_s *stp, int p)
 	return (sum);
 }
 
-
 int	ft_push_to_a(t_s *stp)
 {
 	int		min;
@@ -103,10 +101,10 @@ int	ft_push_to_a(t_s *stp)
 	tmp = stp->sb;
 	while (tmp)
 	{
-		move = ft_calc_min_moves(stp,((t_s_c*)tmp->c)->p);
+		move = ft_calc_min_moves(stp, ((t_s_c *)tmp->c)->p);
 		if (move < min)
 		{
-			p = ((t_s_c*)tmp->c)->p;
+			p = ((t_s_c *)tmp->c)->p;
 			min = move;
 		}
 		tmp = tmp->next;

@@ -6,7 +6,7 @@
 #    By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 13:38:07 by fkrug             #+#    #+#              #
-#    Updated: 2023/05/24 21:28:33 by fkrug            ###   ########.fr        #
+#    Updated: 2023/05/24 21:46:01 by fkrug            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC_PSWAP = push_swap.c push_swap_utils_operations.c \
 			push_swap_utils_operations2.c
 SRC_UTILS = push_swap_utils_input.c push_swap_utils_input2.c \
 	 		push_swap_utils_algo.c push_swap_utils_algo2.c \
-			push_swap_utils_algo3.c push_swap_utils_algo5.c
+			push_swap_utils_algo3.c push_swap_utils_algo4.c \
+			push_swap_utils_algo5.c
 SRC = $(SRC_PSWAP) $(SRC_UTILS)
 OBJ := $(SRC:.c=.o)
 
