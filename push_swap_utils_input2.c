@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 10:32:05 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 17:10:34 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 20:29:35 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,7 @@ int	ft_error(t_s *stack_ptr, char **tmp, int error)
 	else
 		return (0);
 }
-void	ft_put_stack(t_s *stp)
-{
-	t_list	*tmp;
 
-	tmp = stp->sa;
-	ft_printf("Print stack a:\n______\n");
-	while (tmp)
-	{
-		ft_printf("%d\t%d\n_____\n",((t_s_c *)tmp->c)->number, ((t_s_c *)tmp->c)->p);
-		tmp = tmp->next;
-	}
-	ft_printf("END\n");
-	tmp = stp->sb;
-	ft_printf("Print stack b:\n______\n");
-	while (tmp)
-	{
-		ft_printf("%d\t%d\n_____\n",((t_s_c *)tmp->c)->number, ((t_s_c *)tmp->c)->p);
-		tmp = tmp->next;
-	}
-	ft_printf("END\n");
-}
 int	initialize_stack(int argc, char **argv, t_s *stp)
 {
 	int		i;
