@@ -6,13 +6,13 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:03:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 14:28:31 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 20:32:28 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_bubbleSort(int *arr, int size)
+void	ft_bubblesort(int *arr, int size)
 {
 	int	i;
 	int	j;
@@ -62,9 +62,9 @@ void	ft_parse(t_s *stp, int *arr, int size)
 
 void	ft_init_p(t_s *stp)
 {
-	int	*array;
-	int	length;
-	int	i;
+	int		*array;
+	int		length;
+	int		i;
 	t_list	*tmp;
 
 	tmp = stp->sa;
@@ -78,7 +78,7 @@ void	ft_init_p(t_s *stp)
 		array[i++] = ((t_s_c *)tmp->c)->number;
 		tmp = tmp->next;
 	}
-	ft_bubbleSort(array, length);
+	ft_bubblesort(array, length);
 	ft_parse(stp, array, length);
 	free(array);
 }
@@ -90,7 +90,7 @@ int	ft_is_sorted(t_s *stp)
 	int		b;
 
 	tmp = stp->sa;
-	while(tmp->next)
+	while (tmp->next)
 	{
 		a = ((t_s_c *)tmp->c)->number;
 		b = ((t_s_c *)tmp->next->c)->number;
@@ -116,7 +116,7 @@ void	ft_sort_3(t_s *stp)
 		return (ft_swap(stp, "sa"));
 	else if (a > c && a > b && c > b)
 		return (ft_rotate(stp, "ra"));
-	else if (a >c && a < b && b > c)
+	else if (a > c && a < b && b > c)
 		return (ft_rotate(stp, "rra"));
 	ft_swap(stp, "sa");
 	if (a > b)
