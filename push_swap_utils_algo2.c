@@ -6,13 +6,13 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:00:39 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 20:23:48 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/24 21:33:37 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_is_in_A(t_s *stp, int p)
+int	ft_is_in_a(t_s *stp, int p)
 {
 	t_list	*tmpa;
 	t_list	*tmpb;
@@ -34,13 +34,14 @@ int	ft_is_in_A(t_s *stp, int p)
 	return (0);
 }
 
-int	ft_is_all_B(t_s *stp, int p)
+int	ft_is_all_b(t_s *stp, int p)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	while (i <= p)
 	{
-		if (ft_is_in_A(stp, i))
+		if (ft_is_in_a(stp, i))
 			return (1);
 		i++;
 	}
@@ -67,14 +68,15 @@ void	ft_rotate_pb_min(t_s *stp, int p)
 	if (i > ft_lstsize(stp->sb) - i)
 	{
 		while ((ft_lstsize(stp->sb) - i++))
-			ft_rotate(stp,"rrb");
+			ft_rotate(stp, "rrb");
 	}
-	else 
+	else
 	{
 		while (i--)
-			ft_rotate(stp,"rb");
+			ft_rotate(stp, "rb");
 	}
 }
+
 void	ft_make_move_to_b(t_s *stp, int a, int b, int c)
 {
 	t_list	*tmp;
@@ -101,37 +103,18 @@ void	ft_make_move_to_b(t_s *stp, int a, int b, int c)
 int	ft_push_to_b(t_s *stp, int old, int length)
 {
 	t_list	*tmp;
-	static int	i = 0;
-	int	a;
-	int	b;
-	int	c;
+	int		a;
+	int		b;
+	int		c;
 
 	a = old;
 	b = (length - a - 1) / 3 + (length - a - 1) % 3 + a;
 	c = 2 * (length - a - 1) / 3 + 2 * (length - a - 1) % 3 + a;
 	tmp = stp->sa;
-	while (ft_is_all_B(stp, c) && ft_lstsize(tmp) > 3)
+	while (ft_is_all_b(stp, c) && ft_lstsize(tmp) > 3)
 	{
-		//ft_printf("p:%d\t|%d|%d|%d|\tEndbedingung:%d\tListelaenge:%d\n",((t_s_c *)tmp->c)->p,a,b,c,(length-old - 1)/7 + (length-old - 1)%3,ft_lstsize(tmp));
 		ft_make_move_to_b(stp, a, b, c);
 		tmp = stp->sa;
 	}
-	return ((length-a)/3*2+a);
-}
-
-
-void	ft_sort(t_s *stp)
-{
-	int	old;
-
-	old = 0;
-	while(ft_lstsize(stp->sa) > 3)
-		old = ft_push_to_b(stp, old, stp->length);
-	ft_sort_3(stp);
-	while (ft_lstsize(stp->sb))
-		ft_push_to_a(stp);
-	if (ft_rotate_top(stp, 0, "A", 0) < ft_rotate_top(stp, 0, "A", 1))
-		ft_do_move(stp, ft_rotate_top(stp, 0, "A", 0), "ra");
-	else
-		ft_do_move(stp, ft_rotate_top(stp, 0, "A", 1), "rra");
+	return ((length - a) / 3 * 2 + a);
 }
