@@ -6,25 +6,24 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 07:51:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/25 10:22:30 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/25 15:25:34 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int		ft_str_valid(char *str, int	(*f)(const char *,const char *, size_t))
+int		ft_operation_valid(char *str, int	(*f)(const char *,const char *, size_t))
 {
 	int	i;
 
 	i = 0;
-	ft_printf("Return value of (*f): %d\n", (*f)(str, "rra\n", 5));
-	if (!(*f)(str, "rra\n", 5) || !(*f)(str, "rrb\n", 5) || !(*f)(str, "rrr\n", 5))
+	if (!(*f)(str, "rra\n", 4) || !(*f)(str, "rrb\n", 4) || !(*f)(str, "rrr\n", 4))
 		i = 1;
-	if (!(*f)(str, "ra\n", 4) || !(*f)(str, "rb\n", 4) || !(*f)(str, "rr\n", 4))
+	if (!(*f)(str, "ra\n", 3) || !(*f)(str, "rb\n", 3) || !(*f)(str, "rr\n", 3))
 		i = 1;
-	if (!(*f)(str, "sa\n", 4) || !(*f)(str, "sb\n", 4) || !(*f)(str, "ss\n", 4))
+	if (!(*f)(str, "sa\n", 3) || !(*f)(str, "sb\n", 3) || !(*f)(str, "ss\n", 3))
 		i = 1;
-	if (!(*f)(str, "pa\n", 4) || !(*f)(str, "pb\n", 4))
+	if (!(*f)(str, "pa\n", 3) || !(*f)(str, "pb\n", 3))
 		i = 1;
 	return (i);
 }
@@ -63,14 +62,39 @@ void	ft_read_instructions(t_s *stp)
 	char	*str;
 
 	str = get_next_line(STDIN_FILENO);
-	while (str)
+	while (str && ft_operation_valid(str, ft_strncmp))
 	{
+		//ft_printf("Is operation valid: %d\n",ft_operation_valid(str, ft_strncmp));
+		// ft_printf("strncmp: %d\n",ft_strncmp(str,"rr\n",3));
 		ft_operation_exec(str, stp);
-		ft_printf("Input valid?: %d\n", ft_str_valid(str, ft_strncmp));
 		free (str);
 		str = get_next_line(STDIN_FILENO);
 	}
+	if (!ft_operation_valid(str, ft_strncmp))
+		ft_putendl_fd("Error", STDERR_FILENO);
 }
+void	ft_put_stack(t_s *stp)
+{
+	t_list	*tmp;
+
+	tmp = stp->sa;
+	ft_printf("Print stack a:\n______\n");
+	while (tmp)
+	{
+		ft_printf("%d\t%d\n_____\n",((t_s_c *)tmp->c)->number, ((t_s_c *)tmp->c)->p);
+		tmp = tmp->next;
+	}
+	ft_printf("END\n");
+	tmp = stp->sb;
+	ft_printf("Print stack b:\n______\n");
+	while (tmp)
+	{
+		ft_printf("%d\t%d\n_____\n",((t_s_c *)tmp->c)->number, ((t_s_c *)tmp->c)->p);
+		tmp = tmp->next;
+	}
+	ft_printf("END\n");
+}
+
 
 int	main(int argc, char **argv)
 {
@@ -83,7 +107,8 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	ft_init_p(&stacks);
 	ft_read_instructions(&stacks);
-	if (ft_is_sorted(&stacks))
+	//ft_put_stack(&stacks);
+	if (ft_is_sorted(&stacks) && !ft_lstsize(stacks.sb))
 		ft_putstr_fd("OK", STDOUT_FILENO);
 	else
 		ft_putstr_fd("KO", STDOUT_FILENO);
