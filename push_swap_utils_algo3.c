@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:59:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 21:45:13 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/25 14:49:06 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ int	ft_stack_max(t_s *stp, char *stack, int max)
 	t_list	*tmp;
 	int		p;
 
+	tmp = stp->sb;
 	if (max == 1)
 		p = 0;
 	else
 		p = stp->length - 1;
 	if (!ft_strncmp(stack, "A", 2))
 		tmp = stp->sa;
-	else if (!ft_strncmp(stack, "B", 2))
-		tmp = stp->sb;
 	while (tmp)
 	{
 		if (p < ((t_s_c *)tmp->c)->p && max == 1)
@@ -88,10 +87,9 @@ int	ft_rotate_top(t_s *stp, int p, char *stack, int rev)
 	int		length;
 
 	i = 0;
+	tmp = stp->sb;
 	if (!ft_strncmp(stack, "A", 2))
 		tmp = stp->sa;
-	else if (!ft_strncmp(stack, "B", 2))
-		tmp = stp->sb;
 	length = ft_lstsize(tmp);
 	while (tmp && p != ((t_s_c *)tmp->c)->p)
 	{
