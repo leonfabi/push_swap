@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:40:40 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/23 14:28:59 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/26 00:20:16 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	ft_list_double(t_list *sa)
 {
 	int	nbr;
 
+	if (!sa)
+		return (0);
 	if (sa->next)
 		nbr = ((t_s_c *)(sa->c))->number;
 	while (sa->next)

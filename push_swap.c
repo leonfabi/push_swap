@@ -6,7 +6,7 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:22:42 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/24 20:25:46 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/26 00:18:35 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 	if (argc < 2 || stacks.length == -1)
 		return (EXIT_FAILURE);
 	ft_init_p(&stacks);
+	if (!ft_lstsize(stacks.sa))
+		return (EXIT_SUCCESS);
 	if (ft_is_sorted(&stacks))
 		return (ft_sanitize(&stacks));
 	else if (ft_lstsize(stacks.sa) == 2)
