@@ -6,13 +6,13 @@
 /*   By: fkrug <fkrug@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 07:51:26 by fkrug             #+#    #+#             */
-/*   Updated: 2023/05/25 15:25:34 by fkrug            ###   ########.fr       */
+/*   Updated: 2023/05/25 15:39:08 by fkrug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int		ft_operation_valid(char *str, int	(*f)(const char *,const char *, size_t))
+int	ft_operation_valid(char *str, int (*f)(const char *, const char *, size_t))
 {
 	int	i;
 
@@ -57,44 +57,21 @@ char	*ft_operation_exec(char *str, t_s *stp)
 	return (str);
 }
 
-void	ft_read_instructions(t_s *stp)
+int	ft_read_instructions(t_s *stp)
 {
 	char	*str;
 
 	str = get_next_line(STDIN_FILENO);
 	while (str && ft_operation_valid(str, ft_strncmp))
 	{
-		//ft_printf("Is operation valid: %d\n",ft_operation_valid(str, ft_strncmp));
-		// ft_printf("strncmp: %d\n",ft_strncmp(str,"rr\n",3));
 		ft_operation_exec(str, stp);
 		free (str);
 		str = get_next_line(STDIN_FILENO);
 	}
-	if (!ft_operation_valid(str, ft_strncmp))
-		ft_putendl_fd("Error", STDERR_FILENO);
+	if (str != NULL && !ft_operation_valid(str, ft_strncmp))
+		return (1);
+	return (0);
 }
-void	ft_put_stack(t_s *stp)
-{
-	t_list	*tmp;
-
-	tmp = stp->sa;
-	ft_printf("Print stack a:\n______\n");
-	while (tmp)
-	{
-		ft_printf("%d\t%d\n_____\n",((t_s_c *)tmp->c)->number, ((t_s_c *)tmp->c)->p);
-		tmp = tmp->next;
-	}
-	ft_printf("END\n");
-	tmp = stp->sb;
-	ft_printf("Print stack b:\n______\n");
-	while (tmp)
-	{
-		ft_printf("%d\t%d\n_____\n",((t_s_c *)tmp->c)->number, ((t_s_c *)tmp->c)->p);
-		tmp = tmp->next;
-	}
-	ft_printf("END\n");
-}
-
 
 int	main(int argc, char **argv)
 {
@@ -106,12 +83,15 @@ int	main(int argc, char **argv)
 	if (argc < 2 || stacks.length == -1)
 		return (EXIT_FAILURE);
 	ft_init_p(&stacks);
-	ft_read_instructions(&stacks);
-	//ft_put_stack(&stacks);
-	if (ft_is_sorted(&stacks) && !ft_lstsize(stacks.sb))
-		ft_putstr_fd("OK", STDOUT_FILENO);
+	if (ft_read_instructions(&stacks))
+		ft_putendl_fd("Error", STDERR_FILENO);
 	else
-		ft_putstr_fd("KO", STDOUT_FILENO);
+	{
+		if (ft_is_sorted(&stacks) && !ft_lstsize(stacks.sb))
+			ft_putstr_fd("OK", STDOUT_FILENO);
+		else
+			ft_putstr_fd("KO", STDOUT_FILENO);
+	}
 	ft_sanitize(&stacks);
 	return (1);
 }
